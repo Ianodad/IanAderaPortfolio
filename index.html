@@ -406,10 +406,13 @@
                 return null; 
             }
 
+            // Define firefly glow colors based on theme
+            const glowColor = isDark ? '165, 243, 252' : '56, 189, 248'; // Cyan-200 or Sky-400
+
             return (
                 <motion.div 
-                    // UPDATED: Background color to Ice White/Blue (cyan-50) with shadow
-                    className={`fixed z-[9999] pointer-events-none rounded-full flex items-center justify-center ${isDark ? 'bg-cyan-50 shadow-[0_0_15px_rgba(165,243,252,0.6)]' : 'bg-slate-900'}`}
+                    // Remove static shadow class to let animate prop handle it
+                    className={`fixed z-[9999] pointer-events-none rounded-full flex items-center justify-center ${isDark ? 'bg-cyan-50' : 'bg-slate-900'}`}
                     style={{
                         left: cursorX, 
                         top: cursorY,
@@ -417,6 +420,19 @@
                         height: cursorHeight,
                         scale: scale, // Apply the dynamic scale
                         opacity: stickyElement ? 0.3 : 1
+                    }}
+                    // Firefly pulsing effect
+                    animate={{
+                        boxShadow: [
+                            `0 0 8px rgba(${glowColor}, 0.3)`,  // Dimmer
+                            `0 0 24px rgba(${glowColor}, 0.8)`, // Brighter
+                            `0 0 8px rgba(${glowColor}, 0.3)`   // Back to dim
+                        ]
+                    }}
+                    transition={{
+                        duration: 3,        // Slow, organic pulse
+                        repeat: Infinity,
+                        ease: "easeInOut"
                     }}
                 >
                     <AnimatePresence>
@@ -481,7 +497,7 @@
             )
         }
 
-        // --- 5. Gooey Link Component (NEW) ---
+        // --- 5. Gooey Link Component (FIXED) ---
         const GooeyLink = ({ children, href, isActive, onClick }) => {
             const { isDark } = useContext(ThemeContext);
             
@@ -489,8 +505,10 @@
                 <MagneticButton>
                     <a href={href} onClick={onClick} className="relative group px-4 py-2 block overflow-hidden">
                         {/* Liquid Background Blob */}
-                        <div className="absolute inset-0 w-full h-full filter url('#goo') opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full blur-md ${isActive ? 'bg-cyan-500' : (isDark ? 'bg-white/20' : 'bg-black/10')} group-hover:scale-[3] transition-transform duration-500`}></div>
+                        {/* FIX: Use .gooey-filter class instead of invalid Tailwind filter url syntax */}
+                        <div className="absolute inset-0 w-full h-full gooey-filter opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                             {/* Removed blur-md because the SVG filter handles the blur */}
+                             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full ${isActive ? 'bg-cyan-500' : (isDark ? 'bg-white/20' : 'bg-black/10')} group-hover:scale-[3] transition-transform duration-500`}></div>
                         </div>
 
                         <span className={`relative z-10 text-sm font-bold uppercase tracking-wide transition-colors duration-300 ${
