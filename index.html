@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ian Adera - FullStack Developer Portfolio</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="Ian Adera - Senior FullStack Developer specializing in React, Node.js, and Cloud Technologies. 5+ years experience building scalable web applications.">
+    <meta property="og:title" content="Ian Adera - FullStack Developer Portfolio">
+    <meta property="og:description" content="Ian Adera - Senior FullStack Developer specializing in React, Node.js, and Cloud Technologies. 5+ years experience building scalable web applications.">
+    <meta property="og:image" content="https://ian-adera.vercel.app/preview-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                        'spin-slow': 'spin 3s linear infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%": { transform: "translate(0px, 0px) scale(1)" },
+                            "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                            "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                            "100%": { transform: "translate(0px, 0px) scale(1)" }
+                        },
+                        shimmer: {
+                            "0%": { backgroundPosition: "-1000px 0" },
+                            "100%": { backgroundPosition: "1000px 0" }
+                        }
+                    },
+                    colors: {
+                        dark: {
+                            bg: '#020617',
+                            card: 'rgba(15, 23, 42, 0.6)',
+                            text: '#ffffff',
+                            subtext: '#94a3b8'
+                        },
+                        light: {
+                            bg: '#f8fafc',
+                            card: 'rgba(255, 255, 255, 0.7)',
+                            text: '#0f172a',
+                            subtext: '#475569'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- React, ReactDOM & Framer Motion -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@10/dist/framer-motion.js"></script>
+    
+    <!-- Typed.js (Updated to UMD for better browser support) -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    
+    <!-- Babel Standalone -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Dark Mode Defaults */
+        body {
+            background: #020617; 
+            color: white;
+        }
+        
+        /* Light Mode Overrides */
+        html:not(.dark) body {
+            background: #f0f9ff;
+            color: #0f172a;
+        }
+
+        /* Hide default cursor on devices that have a mouse */
+        @media (hover: hover) and (pointer: fine) {
+            body, a, button, input, textarea, select {
+                cursor: none;
+            }
+        }
+
+        ::selection {
+            background: rgba(6, 182, 212, 0.3);
+            color: #a5f3fc;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 5px;
+        }
+        
+        html:not(.dark) ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Glassmorphism Surface */
+        .glass-card-surface {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+            will-change: transform, box-shadow;
+        }
+
+        .group:hover .glass-card-surface {
+            box-shadow: var(--shadow-x, 0px) var(--shadow-y, 25px) 40px -5px rgba(0, 0, 0, 0.6);
+        }
+        
+        /* Light mode specific shadows */
+        html:not(.dark) .glass-card-surface {
+             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+        }
+        
+        html:not(.dark) .group:hover .glass-card-surface {
+            box-shadow: var(--shadow-x, 0px) var(--shadow-y, 25px) 40px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Gooey Filter styles */
+        .gooey-filter {
+            filter: url('#goo');
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- Hidden SVG for Noise & Gooey Filters -->
+    <svg class="invisible absolute size-0">
+        <defs>
+            <filter id="noiseFilter">
+                <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+            </filter>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef, createContext, useContext } = React;
+        const { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence, useMotionValue, useAnimation } = Motion;
+
+        // --- 0. Contexts ---
+        const CursorContext = createContext({
+            stickyElement: null,
+            setStickyElement: () => {},
+            cursorText: "",
+            setCursorText: () => {}
+        });
+        
+        const ThemeContext = createContext({
+            isDark: true,
+            toggleTheme: () => {}
+        });
+
+        const CursorProvider = ({ children }) => {
+            const [stickyElement, setStickyElement] = useState(null);
+            const [cursorText, setCursorText] = useState("");
+
+            return (
+                <CursorContext.Provider value={{ stickyElement, setStickyElement, cursorText, setCursorText }}>
+                    {children}
+                </CursorContext.Provider>
+            );
+        };
+
+        // --- 1. Preloader Component ---
+        const Preloader = ({ onComplete }) => {
+            const [exit, setExit] = useState(false);
+
+            useEffect(() => {
+                const timer = setTimeout(() => {
+                    setExit(true);
+                    setTimeout(onComplete, 800); 
+                }, 2500);
+                return () => clearTimeout(timer);
+            }, []);
+
+            return (
+                <motion.div
+                    className="fixed inset-0 z-[10001] flex items-center justify-center bg-[#020617]"
+                    initial={{ opacity: 1 }}
+                    animate={exit ? { opacity: 0, pointerEvents: "none" } : { opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                >
+                    <div className="relative">
+                        <motion.div
+                            className="w-20 h-20 border-4 border-cyan-500/30 rounded-full"
+                            animate={{ rotate: 360, scale: [1, 1.1, 1] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                        />
+                        <motion.div
+                            className="absolute top-0 left-0 w-20 h-20 border-t-4 border-cyan-400 rounded-full"
+                            animate={{ rotate: -360 }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                        />
+                        <motion.div 
+                            className="absolute inset-0 flex items-center justify-center font-bold text-xl text-white"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                        >
+                            IA
+                        </motion.div>
+                    </div>
+                </motion.div>
+            );
+        };
+
+        // --- 2. Canvas Particle Trails (UPDATED Color) ---
+        const CursorParticles = () => {
+            const canvasRef = useRef(null);
+            const { isDark } = useContext(ThemeContext);
+
+            useEffect(() => {
+                const canvas = canvasRef.current;
+                const ctx = canvas.getContext('2d');
+                let particles = [];
+                let animationFrameId;
+
+                const resizeCanvas = () => {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                };
+
+                window.addEventListener('resize', resizeCanvas);
+                resizeCanvas();
+
+                const createParticle = (x, y) => {
+                    const size = Math.random() * 2 + 1; // Particle size
+                    const speedX = Math.random() * 2 - 1;
+                    const speedY = Math.random() * 2 - 1;
+                    // UPDATED: Use Ice Blue/White for Dark Mode
+                    const color = isDark ? `rgba(207, 250, 254, ${Math.random()})` : `rgba(15, 23, 42, ${Math.random()})`; // Cyan-50 or Dark Slate
+                    
+                    particles.push({
+                        x,
+                        y,
+                        size,
+                        speedX,
+                        speedY,
+                        color,
+                        life: 1 // Life goes from 1 to 0
+                    });
+                };
+
+                const handleMouseMove = (e) => {
+                    // Create multiple particles for density
+                    for(let i=0; i<3; i++) {
+                         createParticle(e.clientX, e.clientY);
+                    }
+                };
+
+                const animate = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    for (let i = 0; i < particles.length; i++) {
+                        const p = particles[i];
+                        ctx.fillStyle = p.color;
+                        ctx.globalAlpha = p.life;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Update properties
+                        p.x += p.speedX;
+                        p.y += p.speedY;
+                        p.life -= 0.02; // Fade out speed
+
+                        if (p.life <= 0) {
+                            particles.splice(i, 1);
+                            i--;
+                        }
+                    }
+                    animationFrameId = requestAnimationFrame(animate);
+                };
+
+                window.addEventListener('mousemove', handleMouseMove);
+                animate();
+
+                return () => {
+                    window.removeEventListener('resize', resizeCanvas);
+                    window.removeEventListener('mousemove', handleMouseMove);
+                    cancelAnimationFrame(animationFrameId);
+                };
+            }, [isDark]);
+
+            return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-[9000]" />;
+        };
+
+        // --- 3. Sticky Magnetic Cursor (UPDATED Color & Logic) ---
+        const StickyCursor = () => {
+            const { stickyElement, cursorText } = useContext(CursorContext);
+            const { isDark } = useContext(ThemeContext);
+            const [isMoving, setIsMoving] = useState(false);
+            const stopTimer = useRef(null);
+
+            const smoothOptions = { damping: 20, stiffness: 300, mass: 0.5 };
+            const cursorX = useSpring(0, smoothOptions);
+            const cursorY = useSpring(0, smoothOptions);
+            const cursorWidth = useSpring(15, smoothOptions);
+            const cursorHeight = useSpring(15, smoothOptions);
+            const scale = useSpring(1, smoothOptions);
+
+            const mouse = useRef({ x: 0, y: 0 });
+
+            useEffect(() => {
+                const manageMouseMove = (e) => {
+                    const { clientX, clientY } = e;
+                    mouse.current = { x: clientX, y: clientY };
+                    
+                    // Logic to track movement state
+                    setIsMoving(true);
+                    if(stopTimer.current) clearTimeout(stopTimer.current);
+                    stopTimer.current = setTimeout(() => {
+                        setIsMoving(false);
+                    }, 100); // 100ms stop threshold
+
+                    if (!stickyElement) {
+                        cursorX.set(clientX - 7.5);
+                        cursorY.set(clientY - 7.5);
+                    }
+                }
+
+                window.addEventListener("mousemove", manageMouseMove);
+                return () => window.removeEventListener("mousemove", manageMouseMove);
+            }, [stickyElement]);
+
+            useEffect(() => {
+                if (stickyElement) {
+                    const { left, top, width, height } = stickyElement.getBoundingClientRect();
+                    const size = Math.max(width, height) * 1.1;
+                    
+                    cursorWidth.set(size);
+                    cursorHeight.set(size);
+                    scale.set(1);
+                    
+                    cursorX.set(left + width / 2 - size / 2);
+                    cursorY.set(top + height / 2 - size / 2);
+                } else if (cursorText) {
+                    const size = 80;
+                    cursorWidth.set(size);
+                    cursorHeight.set(size);
+                    scale.set(1);
+
+                    cursorX.set(mouse.current.x - size / 2);
+                    cursorY.set(mouse.current.y - size / 2);
+                } else {
+                    // Standard State
+                    cursorWidth.set(15);
+                    cursorHeight.set(15);
+                    cursorX.set(mouse.current.x - 7.5);
+                    cursorY.set(mouse.current.y - 7.5);
+
+                    // Dynamic scaling based on movement
+                    if (isMoving) {
+                        scale.set(0.5); // Shrink to look like a particle
+                    } else {
+                        scale.set(1);   // Revert to full circle
+                    }
+                }
+            }, [stickyElement, cursorText, isMoving]);
+
+            if (typeof window !== 'undefined' && window.matchMedia && !window.matchMedia('(hover: hover)').matches) {
+                return null; 
+            }
+
+            return (
+                <motion.div 
+                    // UPDATED: Background color to Ice White/Blue (cyan-50) with shadow
+                    className={`fixed z-[9999] pointer-events-none rounded-full flex items-center justify-center ${isDark ? 'bg-cyan-50 shadow-[0_0_15px_rgba(165,243,252,0.6)]' : 'bg-slate-900'}`}
+                    style={{
+                        left: cursorX, 
+                        top: cursorY,
+                        width: cursorWidth,
+                        height: cursorHeight,
+                        scale: scale, // Apply the dynamic scale
+                        opacity: stickyElement ? 0.3 : 1
+                    }}
+                >
+                    <AnimatePresence>
+                        {cursorText && (
+                            <motion.span
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0 }}
+                                className={`text-[10px] font-black tracking-widest ${isDark ? 'text-black' : 'text-white'}`}
+                            >
+                                {cursorText}
+                            </motion.span>
+                        )}
+                    </AnimatePresence>
+                </motion.div>
+            );
+        }
+
+        // --- 4. Magnetic Button Wrapper ---
+        const MagneticButton = ({ children, className = "", onClick }) => {
+            const ref = useRef(null);
+            const { setStickyElement } = useContext(CursorContext);
+            
+            const x = useMotionValue(0);
+            const y = useMotionValue(0);
+            
+            const mapX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
+            const mapY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
+
+            const handleMouseMove = (e) => {
+                const { clientX, clientY } = e;
+                const { height, width, left, top } = ref.current.getBoundingClientRect();
+                const middleX = clientX - (left + width / 2);
+                const middleY = clientY - (top + height / 2);
+                
+                x.set(middleX * 0.3);
+                y.set(middleY * 0.3);
+            }
+
+            const handleMouseEnter = () => {
+                setStickyElement(ref.current);
+            }
+
+            const handleMouseLeave = () => {
+                setStickyElement(null);
+                x.set(0);
+                y.set(0);
+            }
+
+            return (
+                <motion.div
+                    ref={ref}
+                    onMouseMove={handleMouseMove}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={onClick}
+                    style={{ x: mapX, y: mapY }}
+                    className={`relative cursor-none ${className}`}
+                >
+                    {children}
+                </motion.div>
+            )
+        }
+
+        // --- 5. Gooey Link Component (NEW) ---
+        const GooeyLink = ({ children, href, isActive, onClick }) => {
+            const { isDark } = useContext(ThemeContext);
+            
+            return (
+                <MagneticButton>
+                    <a href={href} onClick={onClick} className="relative group px-4 py-2 block overflow-hidden">
+                        {/* Liquid Background Blob */}
+                        <div className="absolute inset-0 w-full h-full filter url('#goo') opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full blur-md ${isActive ? 'bg-cyan-500' : (isDark ? 'bg-white/20' : 'bg-black/10')} group-hover:scale-[3] transition-transform duration-500`}></div>
+                        </div>
+
+                        <span className={`relative z-10 text-sm font-bold uppercase tracking-wide transition-colors duration-300 ${
+                            isActive 
+                            ? "bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-transparent bg-clip-text"
+                            : isDark ? "text-gray-300 group-hover:text-cyan-300" : "text-gray-600 group-hover:text-slate-900"
+                        }`}>
+                            {children}
+                        </span>
+                        
+                        {/* Underline */}
+                         <motion.span 
+                            className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-cyan-500 z-10"
+                            initial={{ width: 0 }}
+                            animate={{ width: isActive ? '100%' : '0%' }}
+                            whileHover={{ width: '100%' }}
+                            transition={{ duration: 0.3 }}
+                        />
+                    </a>
+                </MagneticButton>
+            );
+        };
+
+        const AnimatedIcon = ({ iconClass, className = "" }) => {
+             return (
+                <motion.div
+                    className={className}
+                    whileHover={{ 
+                        scale: [1, 1.25, 0.75, 1.15, 0.95, 1.05, 1],
+                        rotate: [0, 10, -10, 5, -5, 0],
+                        transition: { duration: 0.6 }
+                    }}
+                >
+                    <i className={iconClass}></i>
+                </motion.div>
+            );
+        }
+
+        const LiquidButton = ({ href, icon, text }) => {
+            return (
+                <MagneticButton className="inline-block relative group">
+                    <motion.a
+                        href={href}
+                        className="relative inline-flex items-center gap-3 font-bold py-4 px-12 rounded-full text-white overflow-hidden"
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        {/* Liquid Background */}
+                        <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-500 to-purple-600 z-0"></div>
+                        <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-500 to-orange-500 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        
+                        {/* Blob Effect on Hover */}
+                        <motion.div 
+                            className="absolute -inset-2 bg-white/20 blur-xl rounded-full opacity-0 group-hover:opacity-100"
+                            animate={{ 
+                                scale: [1, 1.1, 1],
+                                rotate: [0, 90, 0]
+                            }}
+                            transition={{ duration: 3, repeat: Infinity }}
+                        />
+
+                        <span className="relative z-10 flex items-center gap-2">
+                            <i className={icon}></i> {text}
+                        </span>
+                    </motion.a>
+                </MagneticButton>
+            );
+        }
+        
+        const SkeletonCard = () => {
+             const { isDark } = useContext(ThemeContext);
+             return (
+                 <div className={`rounded-2xl p-6 h-full flex flex-col justify-between border ${isDark ? 'border-white/5 bg-white/5' : 'border-slate-200 bg-slate-200/50'}`}>
+                    <div>
+                        <div className="flex justify-between mb-4">
+                            <div className={`h-3 w-1/4 rounded animate-pulse ${isDark ? 'bg-gray-700' : 'bg-gray-300'}`}></div>
+                            <div className={`h-3 w-5 rounded animate-pulse ${isDark ? 'bg-gray-700' : 'bg-gray-300'}`}></div>
+                        </div>
+                        <div className={`h-6 w-3/4 rounded mb-3 animate-pulse ${isDark ? 'bg-gray-700' : 'bg-gray-300'}`}></div>
+                        <div className={`h-4 w-full rounded mb-2 animate-pulse ${isDark ? 'bg-gray-800' : 'bg-gray-300'}`}></div>
+                        <div className={`h-4 w-2/3 rounded mb-6 animate-pulse ${isDark ? 'bg-gray-800' : 'bg-gray-300'}`}></div>
+                    </div>
+                    <div className="flex gap-2">
+                        <div className={`h-5 w-12 rounded animate-pulse ${isDark ? 'bg-gray-700' : 'bg-gray-300'}`}></div>
+                        <div className={`h-5 w-12 rounded animate-pulse ${isDark ? 'bg-gray-700' : 'bg-gray-300'}`}></div>
+                    </div>
+                 </div>
+             );
+        };
+
+        const RevealText = ({ text, className = "", delay = 0 }) => {
+            const chars = text.split("");
+            const container = {
+                hidden: { opacity: 0 },
+                visible: (i = 1) => ({
+                    opacity: 1,
+                    transition: { staggerChildren: 0.05, delayChildren: 0.04 * i + delay },
+                }),
+            };
+            const child = {
+                visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { type: "spring", damping: 12, stiffness: 100 },
+                },
+                hidden: {
+                    opacity: 0,
+                    y: 50,
+                    transition: { type: "spring", damping: 12, stiffness: 100 },
+                },
+            };
+            return (
+                <motion.div
+                    style={{ overflow: "hidden", display: "inline-block" }}
+                    variants={container}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className={className}
+                >
+                    {chars.map((char, index) => (
+                        <motion.span variants={child} key={index}>
+                            {char === " " ? "\u00A0" : char}
+                        </motion.span>
+                    ))}
+                </motion.div>
+            );
+        };
+
+        const CountUpStats = ({ end, duration = 2, suffix = "", prefix = "" }) => {
+            const ref = useRef(null);
+            const inView = useInView(ref, { once: true, amount: 0.5 });
+            const [value, setValue] = useState(0);
+
+            useEffect(() => {
+                if (inView) {
+                    let start = 0;
+                    const increment = end / (duration * 60); 
+                    const timer = setInterval(() => {
+                        start += increment;
+                        if (start >= end) {
+                            setValue(end);
+                            clearInterval(timer);
+                        } else {
+                            setValue(Math.floor(start));
+                        }
+                    }, 1000 / 60);
+                    return () => clearInterval(timer);
+                }
+            }, [inView, end, duration]);
+
+            return (
+                <span ref={ref}>
+                    {prefix}{value}{suffix}
+                </span>
+            );
+        };
+
+        const containerVariants = {
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } }
+        };
+
+        const itemVariants = {
+            hidden: { y: 30, opacity: 0 },
+            visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 50, damping: 15 } }
+        };
+
+        // --- 6. Global Spotlight Overlay (NEW) ---
+        const SpotlightOverlay = () => {
+            const { isDark } = useContext(ThemeContext);
+            const containerRef = useRef(null);
+
+            useEffect(() => {
+                const handleMouseMove = (e) => {
+                    if (containerRef.current) {
+                        const { clientX, clientY } = e;
+                        containerRef.current.style.setProperty('--spot-x', `${clientX}px`);
+                        containerRef.current.style.setProperty('--spot-y', `${clientY}px`);
+                    }
+                };
+                window.addEventListener('mousemove', handleMouseMove);
+                return () => window.removeEventListener('mousemove', handleMouseMove);
+            }, []);
+
+            return (
+                <div 
+                    ref={containerRef}
+                    className="fixed inset-0 pointer-events-none z-[1]" // Sits above background, below content
+                    style={{
+                        background: `radial-gradient(400px circle at var(--spot-x, 50%) var(--spot-y, 50%), ${isDark ? 'rgba(29, 78, 216, 0.15)' : 'rgba(6, 182, 212, 0.1)'}, transparent 80%)`
+                    }}
+                />
+            );
+        };
+
+        // --- 7. Background Component (Modified to sit behind new layers) ---
+        const Background = () => {
+            const containerRef = useRef(null);
+            const { isDark } = useContext(ThemeContext);
+
+            useEffect(() => {
+                const handleMouseMove = (e) => {
+                    const layers = document.querySelectorAll('.parallax-bg');
+                    const centerX = window.innerWidth / 2;
+                    const centerY = window.innerHeight / 2;
+                    const mouseX = e.clientX - centerX;
+                    const mouseY = e.clientY - centerY;
+
+                    layers.forEach(layer => {
+                        const speed = parseFloat(layer.getAttribute('data-speed'));
+                        const x = mouseX * speed;
+                        const y = mouseY * speed;
+                        layer.style.transform = `translate(${x}px, ${y}px)`;
+                    });
+
+                    if (containerRef.current) {
+                        containerRef.current.style.setProperty('--bg-mouse-x', `${e.clientX}px`);
+                        containerRef.current.style.setProperty('--bg-mouse-y', `${e.clientY}px`);
+                    }
+                };
+
+                window.addEventListener('mousemove', handleMouseMove);
+                return () => window.removeEventListener('mousemove', handleMouseMove);
+            }, []);
+
+            return (
+                <div ref={containerRef} className="fixed inset-0 z-0 overflow-hidden pointer-events-none transition-colors duration-500">
+                    <div className={`absolute inset-0 ${isDark ? 'bg-slate-950' : 'bg-slate-50'}`}></div>
+                    
+                    {/* The main wide ambient light */}
+                    <div 
+                        className="absolute inset-0 z-0"
+                        style={{
+                            background: `radial-gradient(1200px circle at var(--bg-mouse-x, 50%) var(--bg-mouse-y, 50%), ${isDark ? 'rgba(255, 255, 255, 0.03)' : 'rgba(0, 0, 0, 0.03)'}, transparent 40%)`
+                        }}
+                    />
+
+                    <div className="absolute top-0 left-[-10%] w-[70vw] h-[70vw] transition-transform duration-1000 ease-out parallax-bg" data-speed="-0.02">
+                        <div className={`w-full h-full rounded-full mix-blend-screen filter blur-[120px] animate-blob ${isDark ? 'bg-purple-600/20 opacity-40' : 'bg-purple-400/20 opacity-60'}`}></div>
+                    </div>
+                    <div className="absolute top-0 right-[-10%] w-[70vw] h-[70vw] transition-transform duration-1000 ease-out parallax-bg" data-speed="0.03">
+                         <div className={`w-full h-full rounded-full mix-blend-screen filter blur-[120px] animate-blob ${isDark ? 'bg-cyan-600/20 opacity-40' : 'bg-cyan-400/20 opacity-60'}`} style={{animationDelay: '2s'}}></div>
+                    </div>
+                    <div className="absolute -bottom-32 left-[20%] w-[70vw] h-[70vw] transition-transform duration-1000 ease-out parallax-bg" data-speed="-0.04">
+                        <div className={`w-full h-full rounded-full mix-blend-screen filter blur-[120px] animate-blob ${isDark ? 'bg-indigo-600/20 opacity-40' : 'bg-indigo-400/20 opacity-60'}`} style={{animationDelay: '4s'}}></div>
+                    </div>
+                    <div className={`absolute inset-0 z-10 mix-blend-overlay ${isDark ? 'opacity-[0.05]' : 'opacity-[0.03]'}`} style={{filter: 'url(#noiseFilter)'}}></div>
+                </div>
+            );
+        };
+
+        const SpotlightText = ({ children, baseClass = "", highlightClass = "", className = "" }) => {
+            const containerRef = useRef(null);
+            const [position, setPosition] = useState({ x: 0, y: 0 });
+            const [opacity, setOpacity] = useState(0);
+            const { isDark } = useContext(ThemeContext);
+
+            const defaultBase = isDark ? "text-gray-500" : "text-gray-400";
+            const defaultHighlight = isDark ? "text-white" : "text-slate-800";
+            const finalBase = baseClass || defaultBase;
+            const finalHighlight = highlightClass || defaultHighlight;
+
+            const handleMouseMove = (e) => {
+                if (!containerRef.current) return;
+                const rect = containerRef.current.getBoundingClientRect();
+                setPosition({
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top
+                });
+                setOpacity(1);
+            };
+
+            const handleMouseLeave = () => {
+                setOpacity(0);
+            };
+
+            return (
+                <div 
+                    ref={containerRef}
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                    className={`relative inline-block ${className}`}
+                >
+                    <span className={finalBase}>{children}</span>
+                    <span 
+                        className={`absolute inset-0 pointer-events-none ${finalHighlight}`}
+                        style={{
+                            maskImage: `radial-gradient(100px circle at ${position.x}px ${position.y}px, black, transparent)`,
+                            WebkitMaskImage: `radial-gradient(100px circle at ${position.x}px ${position.y}px, black, transparent)`,
+                            opacity: opacity,
+                            transition: 'opacity 0.2s ease'
+                        }}
+                    >
+                        {children}
+                    </span>
+                </div>
+            );
+        };
+
+        const GlassCard = ({ children, className = "", noPadding = false, enableHover = true, ...props }) => {
+            const cardRef = useRef(null);
+            const { isDark } = useContext(ThemeContext);
+            
+            // Motion Values for Tilt
+            const x = useMotionValue(0);
+            const y = useMotionValue(0);
+            const rotateX = useTransform(y, [-0.5, 0.5], [5, -5]); // Inverted for natural tilt
+            const rotateY = useTransform(x, [-0.5, 0.5], [-5, 5]);
+
+            const handleMouseMove = (e) => {
+                if (!cardRef.current || !enableHover) return;
+                const rect = cardRef.current.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+                
+                // Normalizing coordinates from -0.5 to 0.5
+                const normalizedX = (mouseX / rect.width) - 0.5;
+                const normalizedY = (mouseY / rect.height) - 0.5;
+                
+                x.set(normalizedX);
+                y.set(normalizedY);
+
+                // CSS vars for spotlight
+                cardRef.current.style.setProperty('--mouse-x', `${mouseX}px`);
+                cardRef.current.style.setProperty('--mouse-y', `${mouseY}px`);
+                
+                // Drift logic for shadow
+                const shadowX = -normalizedX * 20; 
+                const shadowY = -normalizedY * 20;
+                cardRef.current.style.setProperty('--shadow-x', `${shadowX}px`);
+                cardRef.current.style.setProperty('--shadow-y', `${shadowY}px`);
+            };
+            
+            const handleMouseLeave = () => {
+                 x.set(0);
+                 y.set(0);
+            }
+
+            const surfaceBg = isDark ? 'bg-[#0f172a]/60 border-white/10' : 'bg-white/60 border-slate-200';
+            const hoverGlow = isDark 
+                ? 'radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.6), transparent 40%)'
+                : 'radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(0,0,0,0.15), transparent 40%)';
+            const innerShine = isDark
+                ? 'radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.05), transparent 40%)'
+                : 'radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(0,0,0,0.05), transparent 40%)';
+
+            return (
+                <motion.div
+                    ref={cardRef}
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                    style={{ 
+                        perspective: 1000, 
+                        transformStyle: "preserve-3d",
+                        rotateX: enableHover ? rotateX : 0,
+                        rotateY: enableHover ? rotateY : 0
+                    }}
+                    className={`group relative w-full rounded-2xl ${className}`}
+                    {...props}
+                >
+                    <div 
+                        className={`absolute -inset-px rounded-2xl transition duration-300 pointer-events-none ${enableHover ? 'opacity-0 group-hover:opacity-100' : 'opacity-0'}`}
+                        style={enableHover ? { background: hoverGlow } : {}}
+                    />
+                    <div className={`glass-card-surface relative h-full m-[1px] rounded-2xl backdrop-blur-xl border overflow-hidden ${surfaceBg}`}>
+                        <div 
+                            className={`absolute inset-0 z-10 transition duration-300 pointer-events-none ${enableHover ? 'opacity-0 group-hover:opacity-100' : 'opacity-0'}`}
+                            style={enableHover ? { background: innerShine } : {}}
+                        />
+                        <div className={`relative z-20 h-full ${noPadding ? '' : 'p-8'}`}>
+                            {children}
+                        </div>
+                    </div>
+                </motion.div>
+            );
+        };
+
+        const ProgressBar = () => {
+            const { scrollYProgress } = useScroll();
+            const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+            return (
+                <motion.div 
+                    className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 origin-left z-[9999]"
+                    style={{ scaleX }}
+                />
+            );
+        };
+
+        const Navbar = () => {
+            const [isOpen, setIsOpen] = useState(false);
+            const [scrolled, setScrolled] = useState(false);
+            const [activeSection, setActiveSection] = useState('Home');
+            const { isDark, toggleTheme } = useContext(ThemeContext);
+            const navItems = ['Home', 'About', 'Skills', 'Experience', 'Projects', 'Blog', 'Contact'];
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    setScrolled(window.scrollY > 50);
+                    const scrollPosition = window.scrollY + window.innerHeight * 0.4;
+                    for (const item of navItems) {
+                        const section = document.getElementById(item);
+                        if (section) {
+                            const { offsetTop, offsetHeight } = section;
+                            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                                setActiveSection(item);
+                            }
+                        }
+                    }
+                };
+                window.addEventListener('scroll', handleScroll);
+                handleScroll();
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            return (
+                <motion.nav 
+                    initial={{ y: -100 }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+                        scrolled 
+                            ? isDark ? 'bg-[#020617]/80 backdrop-blur-md border-b border-white/5' : 'bg-[#f0f9ff]/80 backdrop-blur-md border-b border-slate-200' 
+                            : 'bg-transparent'
+                    }`}
+                >
+                    <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+                        <MagneticButton>
+                            <motion.div 
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.2 }}
+                                className={`text-2xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}
+                            >
+                                IAN<span className="text-cyan-400">.ODAD</span>
+                            </motion.div>
+                        </MagneticButton>
+
+                        <div className="hidden md:flex gap-6 items-center">
+                            {/* UPDATED: Gooey Links */}
+                            {navItems.map((item, i) => {
+                                const isActive = activeSection === item;
+                                return (
+                                    <GooeyLink 
+                                        key={item} 
+                                        href={`#${item}`} 
+                                        isActive={isActive}
+                                    >
+                                        {item}
+                                    </GooeyLink>
+                                );
+                            })}
+                            
+                            <MagneticButton>
+                                <button onClick={toggleTheme} className={`p-2 text-lg ${isDark ? 'text-yellow-300' : 'text-slate-600'}`}>
+                                    <i className={`fas fa-${isDark ? 'sun' : 'moon'}`}></i>
+                                </button>
+                            </MagneticButton>
+
+                            <MagneticButton>
+                                <a 
+                                    href="Ian_Odhiambo_Adera_FullStack_CV.pdf" 
+                                    download
+                                    className="px-4 py-2 text-xs font-bold uppercase tracking-widest border border-cyan-500/50 rounded-full text-cyan-400 hover:bg-cyan-500/10 transition-colors"
+                                >
+                                    Resume <i className="fas fa-download ml-2"></i>
+                                </a>
+                            </MagneticButton>
+                        </div>
+
+                        <MagneticButton className="md:hidden">
+                            <button onClick={() => setIsOpen(!isOpen)} className={`${isDark ? 'text-white' : 'text-slate-900'} text-2xl p-2`}>
+                                <i className={`fas fa-${isOpen ? 'times' : 'bars'}`}></i>
+                            </button>
+                        </MagneticButton>
+
+                        <AnimatePresence>
+                            {isOpen && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    className={`absolute top-20 left-0 w-full ${isDark ? 'bg-[#020617] border-white/10' : 'bg-[#f0f9ff] border-slate-200'} border-b flex flex-col items-center py-10 gap-6 md:hidden`}
+                                >
+                                    {navItems.map((item, i) => (
+                                        <MagneticButton key={item}>
+                                            <motion.a
+                                                href={`#${item}`}
+                                                initial={{ opacity: 0, x: -20 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: 0.1 * i }}
+                                                onClick={() => setIsOpen(false)}
+                                                className={`text-xl font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}
+                                            >
+                                                {item}
+                                            </motion.a>
+                                        </MagneticButton>
+                                    ))}
+                                    <MagneticButton>
+                                        <a 
+                                            href="Ian_Odhiambo_Adera_FullStack_CV.pdf" 
+                                            download
+                                            className="px-6 py-3 text-sm font-bold uppercase tracking-widest bg-cyan-500 text-white rounded-full"
+                                        >
+                                            Download Resume
+                                        </a>
+                                    </MagneticButton>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+                </motion.nav>
+            );
+        };
+
+        const Hero = () => {
+            const ref = useRef(null);
+            const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+            const { isDark } = useContext(ThemeContext);
+
+            const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+            const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+            const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+            const typedRef = useRef(null);
+
+            useEffect(() => {
+                // Check if Typed is available before initializing
+                if (window.Typed) {
+                    const typed = new window.Typed(typedRef.current, {
+                        strings: ['FullStack Engineer', 'DevOps Practitioner', 'Technical Writer', 'React Specialist'],
+                        typeSpeed: 50,
+                        backSpeed: 50,
+                        loop: true
+                    });
+                    return () => typed.destroy();
+                }
+            }, []);
+
+            return (
+                <section ref={ref} id="Home" className="relative h-screen flex flex-col items-center justify-center overflow-hidden z-10">
+                    <motion.div style={{ y, opacity, scale }} className="text-center px-4">
+                        <div className={`text-5xl md:text-8xl font-black mb-6 tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                            IAN <RevealText text="ADERA" className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-transparent bg-clip-text" />
+                        </div>
+                        <motion.div 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.8, delay: 0.5 }}
+                            className={`text-xl md:text-3xl font-mono h-10 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}
+                        >
+                            I am a <span ref={typedRef} className="text-cyan-400" />
+                        </motion.div>
+                        <motion.p 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.8, delay: 0.8 }}
+                            className={`mt-6 font-mono text-sm tracking-widest ${isDark ? 'text-gray-500' : 'text-gray-500'}`}
+                        >
+                            NAIROBI, KENYA | REMOTE
+                        </motion.p>
+                    </motion.div>
+
+                    <MagneticButton className="mt-24">
+                        <motion.a 
+                            href="#About"
+                            className={`${isDark ? 'text-gray-500 hover:text-white' : 'text-gray-400 hover:text-slate-900'} p-4 block`}
+                            animate={{ y: [0, 10, 0] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                        >
+                            <i className="fas fa-chevron-down text-3xl"></i>
+                        </motion.a>
+                    </MagneticButton>
+                </section>
+            );
+        };
+
+        // About Section (Bento Grid)
+        const About = () => {
+            const { isDark } = useContext(ThemeContext);
+
+            // Staggered Stats
+            const stats = [
+                { value: 70, suffix: '%', label: 'Cost Reduction', desc: 'Optimized cloud migration from AWS to Digital Ocean.', className: "md:col-span-4" },
+                { value: 90, suffix: '%', label: 'Automation', desc: 'Reduced manual work via Jenkins CI/CD pipelines.', className: "md:col-span-4" },
+                { value: 10, suffix: 'k+', label: 'Reads', desc: 'Technical articles on Medium platform.', className: "md:col-span-6" },
+                { value: 80, suffix: '%', label: 'Faster Deploy', desc: 'Through DevOps optimization.', className: "md:col-span-6" }
+            ];
+
+            return (
+                <section id="About" className="py-32 relative z-10">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <motion.div 
+                            className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(180px,auto)]"
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, amount: 0.1 }}
+                        >
+                            {/* Bio Card - Large Block */}
+                            <motion.div 
+                                className="md:col-span-8 md:row-span-2 h-full"
+                                variants={itemVariants}
+                            >
+                                <GlassCard className="h-full flex flex-col justify-center">
+                                    <div className={`leading-relaxed text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                                        <h3 className="text-2xl font-bold mb-6 text-cyan-400">About Me</h3>
+                                        <p className="mb-6">
+                                            Innovative <strong className="text-cyan-400">Full Stack Developer</strong> with over 5 years of experience designing scalable web applications. I specialize in the React ecosystem, Node.js, and Cloud Technologies (AWS, GCP, Azure).
+                                        </p>
+                                        <p className="mb-6">
+                                            Beyond coding, I am a <strong className="text-purple-400">Technical Writer</strong> and Mentor, having guided students in the Google Africa Developer Scholarship program.
+                                        </p>
+                                        
+                                        <div className="flex flex-wrap gap-4 mt-8">
+                                            <div className="flex items-center gap-2 text-sm font-mono border border-cyan-500/30 px-3 py-1 rounded-full text-cyan-500 bg-cyan-500/10">
+                                                <i className="fas fa-award"></i> Azure Certified
+                                            </div>
+                                            <div className="flex items-center gap-2 text-sm font-mono border border-purple-500/30 px-3 py-1 rounded-full text-purple-500 bg-purple-500/10">
+                                                <i className="fas fa-graduation-cap"></i> Moringa School
+                                            </div>
+                                        </div>
+                                    </div>
+                                </GlassCard>
+                            </motion.div>
+
+                            {/* Stats - Varied Sizes */}
+                            {stats.map((item, i) => (
+                                <motion.div key={i} variants={itemVariants} className={`${item.className} h-full`}>
+                                    <GlassCard className="text-center h-full flex flex-col justify-center" noPadding>
+                                        <div className="p-6">
+                                            <h3 className="text-cyan-400 font-bold text-4xl group-hover:scale-110 transition-transform duration-300">
+                                                <CountUpStats end={item.value} suffix={item.suffix} />
+                                            </h3>
+                                            <div className={`font-bold mt-2 mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>{item.label}</div>
+                                            <p className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>{item.desc}</p>
+                                        </div>
+                                    </GlassCard>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Skills Section (Bento Grid)
+        const Skills = () => {
+            const { isDark } = useContext(ThemeContext);
+
+            // Asymmetric sizing for visual interest
+            const skills = [
+                { 
+                    name: "Frontend", 
+                    icon: "fab fa-react", 
+                    color: "from-pink-500 to-rose-500", 
+                    // Added: Flutter, Dart, Svelte, Angular, Lovable, Vue.js, Redux
+                    tech: ["React", "Next.js", "TypeScript", "Tailwind", "Flutter", "Dart", "Svelte", "Angular", "Lovable", "Vue.js", "Redux", "Figma"], 
+                    className: "md:col-span-2 md:row-span-2" 
+                },
+                { 
+                    name: "Backend", 
+                    icon: "fab fa-node-js", 
+                    color: "from-green-400 to-emerald-600", 
+                    // Added: Golang, Python, Supabase, REST API, WebSockets
+                    tech: ["Node.js", "Golang", "Python", "Supabase", "Express.js", "AdonisJs", "REST API", "WebSockets", "GraphQL"], 
+                    className: "md:col-span-2 md:row-span-1" 
+                },
+                { 
+                    name: "DevOps", 
+                    icon: "fab fa-docker", 
+                    color: "from-blue-400 to-indigo-600", 
+                    // Added: GCP, Azure, Bash, Digital Ocean
+                    tech: ["AWS", "GCP", "Azure", "Docker", "Jenkins", "Bash", "CI/CD", "Digital Ocean"], 
+                    className: "md:col-span-1 md:row-span-1" 
+                },
+                { 
+                    name: "Database & AI", 
+                    icon: "fas fa-database", 
+                    color: "from-yellow-400 to-orange-500", 
+                    // Added: Prompt Engineering, SQL
+                    tech: ["PostgreSQL", "MongoDB", "Redis", "Prompt Engineering", "SQL", "NoSQL"], 
+                    className: "md:col-span-1 md:row-span-1" 
+                }
+            ];
+
+            return (
+                <section id="Skills" className="py-32 relative z-10">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <div className="text-center mb-16">
+                            <motion.h2
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6 }}
+                                className="text-4xl md:text-6xl font-black uppercase tracking-tighter bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-transparent bg-clip-text"
+                            >
+                                Tech Arsenal
+                            </motion.h2>
+                        </div>
+
+                        <motion.div 
+                            className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[minmax(180px,auto)]"
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, amount: 0.1 }}
+                        >
+                            {skills.map((skill, i) => (
+                                <motion.div key={i} variants={itemVariants} className={`${skill.className} h-full`}>
+                                    <GlassCard className="h-full flex flex-col">
+                                        <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${skill.color}`} />
+                                        <div className="flex-1">
+                                            <div className={`text-4xl mb-6 ${isDark ? 'text-gray-400' : 'text-slate-400'}`}>
+                                                <AnimatedIcon iconClass={skill.icon} />
+                                            </div>
+                                            <h3 className={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>{skill.name}</h3>
+                                            <div className="flex flex-wrap gap-2">
+                                                {skill.tech.map((t, idx) => (
+                                                    <SpotlightText 
+                                                        key={idx} 
+                                                        baseClass={`${isDark ? 'bg-white/5 border-white/10 text-gray-500' : 'bg-slate-200/50 border-slate-300 text-slate-500'} border px-2 py-1 text-xs font-mono rounded-md`}
+                                                        highlightClass="bg-white/5 border border-white/10 px-2 py-1 text-xs font-mono text-cyan-400 rounded-md"
+                                                        className="inline-block"
+                                                    >
+                                                        {t}
+                                                    </SpotlightText>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </GlassCard>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Experience Section (Timeline - Kept Linear for Readability)
+        const Experience = () => {
+            const { isDark } = useContext(ThemeContext);
+            const experiences = [
+                { id: 1, role: "Senior Frontend Developer", company: "Britam", period: "Sept 2024 - Present", desc: "Leading frontend initiatives for insurance tech using Next.js and TypeScript. Implementing Azure DevOps pipelines for CI/CD and containerizing apps with Docker.", color: "text-blue-400", tech: ["Next.js", "Azure", "Docker"] },
+                { id: 2, role: "Senior Full Stack Developer", company: "Metaverse Architects", period: "Feb 2023 - Feb 2024", desc: "Managed GCP resources and led a team of developers. Engineered high-performance APIs with Node.js and built MVC frameworks.", color: "text-cyan-400", tech: ["GCP", "Node.js", "Doppler"] },
+                { id: 3, role: "Senior Full Stack Developer", company: "YLabs", period: "July 2022 - Dec 2022", desc: "Implemented UI designs in React Native and Next.js. Created GraphQL mutations for robust data interaction and managed AWS resources.", color: "text-purple-400", tech: ["React Native", "GraphQL", "AWS"] },
+                { id: 4, role: "Technical Writer", company: "Dev Genius (Medium)", period: "June 2020 - Jan 2024", desc: "Authored technical articles achieving over 10,000+ reads, translating complex software concepts for diverse audiences.", color: "text-pink-400", tech: ["Technical Writing", "Mentorship"] },
+                { id: 5, role: "Full Stack Developer", company: "Freelance", period: "Jan 2019 - 2021", desc: "Reduced hosting costs by 70% via migration to Digital Ocean. Automated CI/CD pipelines reducing manual work by 90%.", color: "text-green-400", tech: ["Digital Ocean", "Jenkins", "AdonisJs"] }
+            ];
+
+            return (
+                <section id="Experience" className="py-32 relative z-10">
+                    <div className="max-w-4xl mx-auto px-6">
+                        <div className="text-center mb-16">
+                            <motion.h2
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6 }}
+                                className="text-4xl md:text-6xl font-black uppercase tracking-tighter bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-transparent bg-clip-text"
+                            >
+                                Career Logs
+                            </motion.h2>
+                        </div>
+
+                        <motion.div 
+                            className={`relative border-l-2 ${isDark ? 'border-white/10' : 'border-slate-300'} ml-6 md:ml-12`}
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, amount: 0.1 }}
+                        >
+                            {experiences.map((exp) => (
+                                <motion.div
+                                    key={exp.id}
+                                    variants={itemVariants}
+                                    className="relative pl-8 md:pl-12 mb-12"
+                                >
+                                    <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.8)] border-2 border-white" />
+                                    <GlassCard>
+                                        <span className={`text-xs font-mono mb-2 block uppercase tracking-widest ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>{exp.period}</span>
+                                        <h3 className={`text-xl font-bold ${exp.color} mb-1`}>{exp.role}</h3>
+                                        <h4 className={`font-medium mb-4 text-lg ${isDark ? 'text-white' : 'text-slate-900'}`}>{exp.company}</h4>
+                                        <p className={`text-sm leading-relaxed mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{exp.desc}</p>
+                                        
+                                        <div className="flex flex-wrap gap-2">
+                                            {exp.tech.map((t, idx) => (
+                                                <SpotlightText 
+                                                    key={idx}
+                                                    baseClass={`${isDark ? 'bg-white/5 border-white/10 text-gray-400' : 'bg-slate-200/50 border-slate-300 text-slate-500'} border text-[10px] uppercase px-2 py-1 rounded`}
+                                                    highlightClass="bg-white/5 border border-white/10 text-[10px] uppercase px-2 py-1 rounded text-cyan-400"
+                                                >
+                                                    {t}
+                                                </SpotlightText>
+                                            ))}
+                                        </div>
+                                    </GlassCard>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Projects Section (Asymmetric Grid)
+        const Projects = () => {
+            const { isDark } = useContext(ThemeContext);
+
+            // Zig-zag asymmetric pattern
+            const projects = [
+                { id: 1, title: "Cloud Cost Migration", cat: "DevOps", desc: "Migrated application infrastructure from AWS to Digital Ocean, achieving a 70% reduction in hosting costs.", color: "from-blue-500 to-cyan-500", tech: ["AWS", "Digital Ocean", "Migration"], className: "md:col-span-2" },
+                { id: 2, title: "Insurance Tech", cat: "Full-Stack", desc: "Led frontend initiatives at Britam, optimizing user experience and implementing CI/CD with Azure DevOps.", color: "from-blue-600 to-indigo-600", tech: ["Next.js", "Azure"], className: "md:col-span-1" },
+                { id: 3, title: "CI/CD Automation", cat: "DevOps", desc: "Automated deployment pipelines using Jenkins and GitHub Actions.", color: "from-green-500 to-emerald-500", tech: ["Jenkins", "GitHub Actions"], className: "md:col-span-1" },
+                { id: 4, title: "Hybrid Mobile App", cat: "Mobile", desc: "Bridged web and mobile platforms using React Native and Flutter for seamless user experiences.", color: "from-purple-500 to-pink-500", tech: ["React Native", "Flutter"], className: "md:col-span-2" }
+            ];
+
+            return (
+                <section id="Projects" className="py-32 relative z-10">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <div className="text-center mb-16">
+                            <motion.h2
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6 }}
+                                className="text-4xl md:text-6xl font-black uppercase tracking-tighter bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-transparent bg-clip-text"
+                            >
+                                Impact & Work
+                            </motion.h2>
+                        </div>
+
+                        <motion.div 
+                            className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]"
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, amount: 0.1 }}
+                        >
+                            {projects.map((project, i) => (
+                                <motion.div key={i} variants={itemVariants} className={`${project.className} h-full`}>
+                                    <GlassCard noPadding enableHover={false} className="cursor-default h-full flex flex-col">
+                                        <div className={`h-1.5 w-full bg-gradient-to-r ${project.color}`} />
+                                        <div className="p-8 flex-1 flex flex-col justify-between">
+                                            <div>
+                                                <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2 block">{project.cat}</span>
+                                                <SpotlightText 
+                                                    baseClass={`text-2xl font-bold ${isDark ? 'text-gray-500' : 'text-slate-400'} mb-4 transition-colors`}
+                                                    highlightClass={`text-2xl font-bold ${isDark ? 'text-white' : 'text-slate-900'} mb-4 transition-colors`}
+                                                    className="mb-4 block"
+                                                >
+                                                    {project.title}
+                                                </SpotlightText>
+                                                <p className={`${isDark ? 'text-gray-500' : 'text-gray-600'} text-sm leading-relaxed mb-6 block`}>
+                                                    {project.desc}
+                                                </p>
+                                            </div>
+                                            
+                                            <div className="flex flex-wrap gap-2 border-t border-white/5 pt-4">
+                                                {project.tech.map((t, idx) => (
+                                                    <SpotlightText 
+                                                        key={idx} 
+                                                        baseClass={`text-xs font-mono ${isDark ? 'text-gray-600' : 'text-slate-400'}`}
+                                                        highlightClass="text-xs font-mono text-cyan-400"
+                                                    >
+                                                        #{t}
+                                                    </SpotlightText>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </GlassCard>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Blog Section (Magazine Layout)
+        const Blog = () => {
+            const { isDark } = useContext(ThemeContext);
+            const { setCursorText } = useContext(CursorContext);
+            const [isLoading, setIsLoading] = useState(true);
+
+            useEffect(() => {
+                const timer = setTimeout(() => setIsLoading(false), 2000);
+                return () => clearTimeout(timer);
+            }, []);
+
+            const articles = [
+                { title: "Building a MVC App with NextJS & Prisma", desc: "A detailed walkthrough on architecting monolithic apps with Next.js and Prisma.", link: "https://ianodad.medium.com/building-a-mvc-application-with-nextjs-and-prisma-a4be9276b9f2", date: "May 2022", tags: ["Next.js", "Prisma"], className: "md:col-span-2 md:row-span-2" },
+                { title: "Kubernetes Intro", desc: "Automate deploying, scaling, and operating application containers.", link: "https://ianodad.medium.com/kubernetes-introduction-cddf9969e772", date: "Aug 2021", tags: ["K8s", "DevOps"], className: "md:col-span-2" },
+                { title: "Jenkins & Node.js", desc: "Setting up CI/CD pipelines from scratch.", link: "https://blog.devgenius.io/integrating-jenkins-with-a-nodejs-project-219d249b1fb2", date: "Oct 2020", tags: ["CI/CD"], className: "md:col-span-2" }
+            ];
+
+            return (
+                <section id="Blog" className="py-32 relative z-10">
+                    <div className="max-w-7xl mx-auto px-6">
+                        <div className="flex justify-between items-end mb-16">
+                            <motion.h2
+                                initial={{ opacity: 0, x: -50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                className="text-4xl font-black uppercase tracking-tighter bg-gradient-to-r from-purple-500 to-cyan-500 text-transparent bg-clip-text"
+                            >
+                                Tech Writing
+                            </motion.h2>
+                            <MagneticButton>
+                                <a href="https://medium.com/@ianodad" target="_blank" className={`text-sm font-bold ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-slate-900'}`}>
+                                    View All on Medium <i className="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </MagneticButton>
+                        </div>
+
+                        <motion.div 
+                            className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[minmax(200px,auto)]"
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, amount: 0.1 }}
+                        >
+                            {isLoading ? (
+                                // Custom Skeleton Layout matching Bento
+                                <>
+                                    <motion.div variants={itemVariants} className="md:col-span-2 md:row-span-2 h-full"><SkeletonCard /></motion.div>
+                                    <motion.div variants={itemVariants} className="md:col-span-2 h-full"><SkeletonCard /></motion.div>
+                                    <motion.div variants={itemVariants} className="md:col-span-2 h-full"><SkeletonCard /></motion.div>
+                                </>
+                            ) : (
+                                articles.map((article, i) => (
+                                    <motion.div
+                                        key={i}
+                                        variants={itemVariants}
+                                        className={`${article.className} h-full`}
+                                    >
+                                        <a 
+                                            href={article.link} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="block h-full cursor-none" 
+                                            onMouseEnter={() => setCursorText("READ")}
+                                            onMouseLeave={() => setCursorText("")}
+                                        >
+                                            <GlassCard className="h-full flex flex-col justify-between hover:border-cyan-500/30 transition-colors" enableHover={true}>
+                                                <div>
+                                                    <div className="flex justify-between text-xs font-mono text-cyan-500 mb-4">
+                                                        <span>{article.date}</span>
+                                                        <i className="fab fa-medium"></i>
+                                                    </div>
+                                                    <h3 className={`text-xl font-bold mb-3 ${isDark ? 'text-white' : 'text-slate-900'}`}>{article.title}</h3>
+                                                    <p className={`text-sm mb-6 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{article.desc}</p>
+                                                </div>
+                                                <div className="flex gap-2">
+                                                    {article.tags.map(tag => (
+                                                        <span key={tag} className={`text-[10px] px-2 py-1 rounded border ${isDark ? 'border-white/10 text-gray-500' : 'border-slate-300 text-slate-500'}`}>
+                                                            {tag}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </GlassCard>
+                                        </a>
+                                    </motion.div>
+                                ))
+                            )}
+                        </motion.div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Contact = () => {
+            const ref = useRef(null);
+            const isInView = useInView(ref, { once: false, amount: 0.5 });
+            const { isDark } = useContext(ThemeContext);
+
+            return (
+                <section ref={ref} id="Contact" className="py-32 relative z-10">
+                    <div className="max-w-4xl mx-auto px-6">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                            animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 50 }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <GlassCard className="text-center p-12">
+                                <motion.h2 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                                    transition={{ duration: 0.6, delay: 0.2 }}
+                                    className={`text-3xl md:text-5xl font-bold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}
+                                >
+                                    Let's Collaborate
+                                </motion.h2>
+                                <p className={`mb-8 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                                    Nairobi, Kenya (GMT+3) | Open for Remote Work
+                                </p>
+
+                                {/* UPDATED: Liquid Button */}
+                                <LiquidButton 
+                                    href="mailto:ianodad@gmail.com"
+                                    icon="fas fa-paper-plane"
+                                    text="Send Email"
+                                />
+
+                                <div className="flex justify-center gap-8 mt-12">
+                                    {[
+                                        { href: "https://github.com/Ianodad", icon: "fab fa-github" },
+                                        { href: "https://linkedin.com/in/ian-odhiambo", icon: "fab fa-linkedin-in" },
+                                        { href: "https://medium.com/@ianodad", icon: "fab fa-medium-m" },
+                                        { href: "https://ian-adera.vercel.app", icon: "fas fa-globe" }
+                                    ].map((social, i) => (
+                                        <MagneticButton key={i}>
+                                            <a
+                                                href={social.href}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={`text-2xl px-2 py-2 block ${isDark ? 'text-gray-400' : 'text-gray-600'}`}
+                                            >
+                                                {/* UPDATED: Animated Icons */}
+                                                <AnimatedIcon iconClass={social.icon} />
+                                            </a>
+                                        </MagneticButton>
+                                    ))}
+                                </div>
+                            </GlassCard>
+                        </motion.div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Footer = () => {
+            const { isDark } = useContext(ThemeContext);
+            return (
+                <footer className={`relative z-10 py-8 text-center text-gray-500 border-t font-mono text-xs ${isDark ? 'bg-[#020617] border-white/5' : 'bg-[#f0f9ff] border-slate-200'}`}>
+                    <p>© {new Date().getFullYear()} Ian Odhiambo Adera. All Rights Reserved.</p>
+                </footer>
+            );
+        };
+
+        const App = () => {
+            const [isLoading, setIsLoading] = useState(true);
+            const [isDark, setIsDark] = useState(true);
+
+            const toggleTheme = () => {
+                setIsDark(!isDark);
+                if (isDark) {
+                    document.documentElement.classList.remove('dark');
+                } else {
+                    document.documentElement.classList.add('dark');
+                }
+            };
+
+            return (
+                <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+                    <CursorProvider>
+                        {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+                        {!isLoading && (
+                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+                                <CursorParticles />
+                                <SpotlightOverlay />
+                                <StickyCursor />
+                                <Background />
+                                <ProgressBar />
+                                <Navbar />
+                                <Hero />
+                                <About />
+                                <Skills />
+                                <Experience />
+                                <Projects />
+                                <Blog />
+                                <Contact />
+                                <Footer />
+                            </motion.div>
+                        )}
+                    </CursorProvider>
+                </ThemeContext.Provider>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
