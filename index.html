@@ -585,12 +585,12 @@
                             <div className={`h-3 w-5 rounded animate-pulse ${isDark ? 'bg-gray-700' : 'bg-gray-300'}`}></div>
                         </div>
                         <div className={`h-6 w-3/4 rounded mb-3 animate-pulse ${isDark ? 'bg-gray-700' : 'bg-gray-300'}`}></div>
-                        <div className={`h-4 w-full rounded mb-2 animate-pulse ${isDark ? 'bg-gray-800' : 'bg-gray-300'}`}></div>
-                        <div className={`h-4 w-2/3 rounded mb-6 animate-pulse ${isDark ? 'bg-gray-800' : 'bg-gray-300'}`}></div>
+                        <div class={`h-4 w-full rounded mb-2 animate-pulse ${isDark ? 'bg-gray-800' : 'bg-gray-300'}`}></div>
+                        <div class={`h-4 w-2/3 rounded mb-6 animate-pulse ${isDark ? 'bg-gray-800' : 'bg-gray-300'}`}></div>
                     </div>
                     <div className="flex gap-2">
-                        <div className={`h-5 w-12 rounded animate-pulse ${isDark ? 'bg-gray-700' : 'bg-gray-300'}`}></div>
-                        <div className={`h-5 w-12 rounded animate-pulse ${isDark ? 'bg-gray-700' : 'bg-gray-300'}`}></div>
+                        <div class={`h-5 w-12 rounded animate-pulse ${isDark ? 'bg-gray-700' : 'bg-gray-300'}`}></div>
+                        <div class={`h-5 w-12 rounded animate-pulse ${isDark ? 'bg-gray-700' : 'bg-gray-300'}`}></div>
                     </div>
                  </div>
              );
@@ -745,15 +745,15 @@
                     />
 
                     <div className="absolute top-0 left-[-10%] w-[70vw] h-[70vw] transition-transform duration-1000 ease-out parallax-bg" data-speed="-0.02">
-                        <div className={`w-full h-full rounded-full mix-blend-screen filter blur-[120px] animate-blob ${isDark ? 'bg-purple-600/20 opacity-40' : 'bg-purple-400/20 opacity-60'}`}></div>
+                        <div class={`w-full h-full rounded-full mix-blend-screen filter blur-[120px] animate-blob ${isDark ? 'bg-purple-600/20 opacity-40' : 'bg-purple-400/20 opacity-60'}`}></div>
                     </div>
-                    <div className="absolute top-0 right-[-10%] w-[70vw] h-[70vw] transition-transform duration-1000 ease-out parallax-bg" data-speed="0.03">
-                         <div className={`w-full h-full rounded-full mix-blend-screen filter blur-[120px] animate-blob ${isDark ? 'bg-cyan-600/20 opacity-40' : 'bg-cyan-400/20 opacity-60'}`} style={{animationDelay: '2s'}}></div>
+                    <div class="absolute top-0 right-[-10%] w-[70vw] h-[70vw] transition-transform duration-1000 ease-out parallax-bg" data-speed="0.03">
+                         <div class={`w-full h-full rounded-full mix-blend-screen filter blur-[120px] animate-blob ${isDark ? 'bg-cyan-600/20 opacity-40' : 'bg-cyan-400/20 opacity-60'}`} style={{animationDelay: '2s'}}></div>
                     </div>
-                    <div className="absolute -bottom-32 left-[20%] w-[70vw] h-[70vw] transition-transform duration-1000 ease-out parallax-bg" data-speed="-0.04">
-                        <div className={`w-full h-full rounded-full mix-blend-screen filter blur-[120px] animate-blob ${isDark ? 'bg-indigo-600/20 opacity-40' : 'bg-indigo-400/20 opacity-60'}`} style={{animationDelay: '4s'}}></div>
+                    <div class="absolute -bottom-32 left-[20%] w-[70vw] h-[70vw] transition-transform duration-1000 ease-out parallax-bg" data-speed="-0.04">
+                        <div class={`w-full h-full rounded-full mix-blend-screen filter blur-[120px] animate-blob ${isDark ? 'bg-indigo-600/20 opacity-40' : 'bg-indigo-400/20 opacity-60'}`} style={{animationDelay: '4s'}}></div>
                     </div>
-                    <div className={`absolute inset-0 z-10 mix-blend-overlay ${isDark ? 'opacity-[0.05]' : 'opacity-[0.03]'}`} style={{filter: 'url(#noiseFilter)'}}></div>
+                    <div class={`absolute inset-0 z-10 mix-blend-overlay ${isDark ? 'opacity-[0.05]' : 'opacity-[0.03]'}`} style={{filter: 'url(#noiseFilter)'}}></div>
                 </div>
             );
         };
@@ -801,7 +801,7 @@
                         }}
                     >
                         {children}
-                    </span>
+                    </span >
                 </div>
             );
         };
@@ -949,7 +949,7 @@
                                 transition={{ delay: 0.2 }}
                                 className={`text-2xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}
                             >
-                                IAN<span className="text-cyan-400">.ODAD</span>
+                                IAN<span className="text-cyan-400">.ADERA</span>
                             </motion.div>
                         </MagneticButton>
 
@@ -1005,8 +1005,8 @@
                                 >
                                     {/* Background decoration for mobile menu */}
                                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                                         <div className={`absolute top-[-10%] right-[-10%] w-64 h-64 rounded-full blur-[80px] opacity-20 ${isDark ? 'bg-cyan-500' : 'bg-cyan-400'}`}></div>
-                                         <div className={`absolute bottom-[-10%] left-[-10%] w-64 h-64 rounded-full blur-[80px] opacity-20 ${isDark ? 'bg-purple-500' : 'bg-purple-400'}`}></div>
+                                         <div class={`absolute top-[-10%] right-[-10%] w-64 h-64 rounded-full blur-[80px] opacity-20 ${isDark ? 'bg-cyan-500' : 'bg-cyan-400'}`}></div>
+                                         <div class={`absolute bottom-[-10%] left-[-10%] w-64 h-64 rounded-full blur-[80px] opacity-20 ${isDark ? 'bg-purple-500' : 'bg-purple-400'}`}></div>
                                     </div>
 
                                     {/* Items Container */}
@@ -1036,7 +1036,7 @@
                                             className="flex gap-6 mt-4"
                                         >
                                             <button onClick={toggleTheme} className={`p-3 rounded-full border ${isDark ? 'border-white/20 text-yellow-300' : 'border-slate-300 text-slate-600'}`}>
-                                                <i className={`fas fa-${isDark ? 'sun' : 'moon'} text-xl`}></i>
+                                                <i class={`fas fa-${isDark ? 'sun' : 'moon'} text-xl`}></i>
                                             </button>
                                             
                                             <a 
@@ -1082,7 +1082,7 @@
             return (
                 <section ref={ref} id="Home" className="relative h-screen flex flex-col items-center justify-center overflow-hidden z-10">
                     <motion.div style={{ y, opacity, scale }} className="text-center px-4">
-                        <div className={`text-5xl md:text-8xl font-black mb-6 tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                        <div class={`text-5xl md:text-8xl font-black mb-6 tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
                             IAN <RevealText text="ADERA" className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-transparent bg-clip-text" />
                         </div>
                         <motion.div 
@@ -1110,7 +1110,7 @@
                             animate={{ y: [0, 10, 0] }}
                             transition={{ duration: 2, repeat: Infinity }}
                         >
-                            <i className="fas fa-chevron-down text-3xl"></i>
+                            <i class="fas fa-chevron-down text-3xl"></i>
                         </motion.a>
                     </MagneticButton>
                 </section>
@@ -1131,7 +1131,7 @@
 
             return (
                 <section id="About" className="py-32 relative z-10">
-                    <div className="max-w-7xl mx-auto px-6">
+                    <div class="max-w-7xl mx-auto px-6">
                         <motion.div 
                             className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(180px,auto)]"
                             variants={containerVariants}
@@ -1145,21 +1145,21 @@
                                 variants={itemVariants}
                             >
                                 <GlassCard className="h-full flex flex-col justify-center">
-                                    <div className={`leading-relaxed text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                                        <h3 className="text-2xl font-bold mb-6 text-cyan-400">About Me</h3>
-                                        <p className="mb-6">
-                                            Innovative <strong className="text-cyan-400">Full Stack Developer</strong> with over 5 years of experience designing scalable web applications. I specialize in the React ecosystem, Node.js, and Cloud Technologies (AWS, GCP, Azure).
+                                    <div class={`leading-relaxed text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                                        <h3 class="text-2xl font-bold mb-6 text-cyan-400">About Me</h3>
+                                        <p class="mb-6">
+                                            Innovative <strong class="text-cyan-400">Full Stack Developer</strong> with over 5 years of experience designing scalable web applications. I specialize in the React ecosystem, Node.js, and Cloud Technologies (AWS, GCP, Azure).
                                         </p>
-                                        <p className="mb-6">
-                                            Beyond coding, I am a <strong className="text-purple-400">Technical Writer</strong> and Mentor, having guided students in the Google Africa Developer Scholarship program.
+                                        <p class="mb-6">
+                                            Beyond coding, I am a <strong class="text-purple-400">Technical Writer</strong> and Mentor, having guided students in the Google Africa Developer Scholarship program.
                                         </p>
                                         
-                                        <div className="flex flex-wrap gap-4 mt-8">
-                                            <div className="flex items-center gap-2 text-sm font-mono border border-cyan-500/30 px-3 py-1 rounded-full text-cyan-500 bg-cyan-500/10">
-                                                <i className="fas fa-award"></i> Azure Certified
+                                        <div class="flex flex-wrap gap-4 mt-8">
+                                            <div class="flex items-center gap-2 text-sm font-mono border border-cyan-500/30 px-3 py-1 rounded-full text-cyan-500 bg-cyan-500/10">
+                                                <i class="fas fa-award"></i> Azure Certified
                                             </div>
-                                            <div className="flex items-center gap-2 text-sm font-mono border border-purple-500/30 px-3 py-1 rounded-full text-purple-500 bg-purple-500/10">
-                                                <i className="fas fa-graduation-cap"></i> Moringa School
+                                            <div class="flex items-center gap-2 text-sm font-mono border border-purple-500/30 px-3 py-1 rounded-full text-purple-500 bg-purple-500/10">
+                                                <i class="fas fa-graduation-cap"></i> Moringa School
                                             </div>
                                         </div>
                                     </div>
@@ -1170,12 +1170,12 @@
                             {stats.map((item, i) => (
                                 <motion.div key={i} variants={itemVariants} className={`${item.className} h-full`}>
                                     <GlassCard className="text-center h-full flex flex-col justify-center" noPadding>
-                                        <div className="p-6">
-                                            <h3 className="text-cyan-400 font-bold text-4xl group-hover:scale-110 transition-transform duration-300">
+                                        <div class="p-6">
+                                            <h3 class="text-cyan-400 font-bold text-4xl group-hover:scale-110 transition-transform duration-300">
                                                 <CountUpStats end={item.value} suffix={item.suffix} />
                                             </h3>
-                                            <div className={`font-bold mt-2 mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>{item.label}</div>
-                                            <p className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>{item.desc}</p>
+                                            <div class={`font-bold mt-2 mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>{item.label}</div>
+                                            <p class={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>{item.desc}</p>
                                         </div>
                                     </GlassCard>
                                 </motion.div>
@@ -1228,13 +1228,13 @@
 
             return (
                 <section id="Skills" className="py-32 relative z-10">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="text-center mb-16">
+                    <div class="max-w-7xl mx-auto px-6">
+                        <div class="text-center mb-16">
                             <motion.h2
                                 initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
-                                className="text-4xl md:text-6xl font-black uppercase tracking-tighter bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-transparent bg-clip-text"
+                                class="text-4xl md:text-6xl font-black uppercase tracking-tighter bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-transparent bg-clip-text"
                             >
                                 Tech Arsenal
                             </motion.h2>
@@ -1250,13 +1250,13 @@
                             {skills.map((skill, i) => (
                                 <motion.div key={i} variants={itemVariants} className={`${skill.className} h-full`}>
                                     <GlassCard className="h-full flex flex-col">
-                                        <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${skill.color}`} />
-                                        <div className="flex-1">
-                                            <div className={`text-4xl mb-6 ${isDark ? 'text-gray-400' : 'text-slate-400'}`}>
+                                        <div class={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${skill.color}`} />
+                                        <div class="flex-1">
+                                            <div class={`text-4xl mb-6 ${isDark ? 'text-gray-400' : 'text-slate-400'}`}>
                                                 <AnimatedIcon iconClass={skill.icon} />
                                             </div>
-                                            <h3 className={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>{skill.name}</h3>
-                                            <div className="flex flex-wrap gap-2">
+                                            <h3 class={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>{skill.name}</h3>
+                                            <div class="flex flex-wrap gap-2">
                                                 {skill.tech.map((t, idx) => (
                                                     <SpotlightText 
                                                         key={idx} 
@@ -1291,13 +1291,13 @@
 
             return (
                 <section id="Experience" className="py-32 relative z-10">
-                    <div className="max-w-4xl mx-auto px-6">
-                        <div className="text-center mb-16">
+                    <div class="max-w-4xl mx-auto px-6">
+                        <div class="text-center mb-16">
                             <motion.h2
                                 initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
-                                className="text-4xl md:text-6xl font-black uppercase tracking-tighter bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-transparent bg-clip-text"
+                                class="text-4xl md:text-6xl font-black uppercase tracking-tighter bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-transparent bg-clip-text"
                             >
                                 Career Logs
                             </motion.h2>
@@ -1316,14 +1316,14 @@
                                     variants={itemVariants}
                                     className="relative pl-8 md:pl-12 mb-12"
                                 >
-                                    <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.8)] border-2 border-white" />
+                                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.8)] border-2 border-white" />
                                     <GlassCard>
-                                        <span className={`text-xs font-mono mb-2 block uppercase tracking-widest ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>{exp.period}</span>
-                                        <h3 className={`text-xl font-bold ${exp.color} mb-1`}>{exp.role}</h3>
-                                        <h4 className={`font-medium mb-4 text-lg ${isDark ? 'text-white' : 'text-slate-900'}`}>{exp.company}</h4>
-                                        <p className={`text-sm leading-relaxed mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{exp.desc}</p>
+                                        <span class={`text-xs font-mono mb-2 block uppercase tracking-widest ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>{exp.period}</span>
+                                        <h3 class={`text-xl font-bold ${exp.color} mb-1`}>{exp.role}</h3>
+                                        <h4 class={`font-medium mb-4 text-lg ${isDark ? 'text-white' : 'text-slate-900'}`}>{exp.company}</h4>
+                                        <p class={`text-sm leading-relaxed mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{exp.desc}</p>
                                         
-                                        <div className="flex flex-wrap gap-2">
+                                        <div class="flex flex-wrap gap-2">
                                             {exp.tech.map((t, idx) => (
                                                 <SpotlightText 
                                                     key={idx}
@@ -1357,13 +1357,13 @@
 
             return (
                 <section id="Projects" className="py-32 relative z-10">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="text-center mb-16">
+                    <div class="max-w-7xl mx-auto px-6">
+                        <div class="text-center mb-16">
                             <motion.h2
                                 initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
-                                className="text-4xl md:text-6xl font-black uppercase tracking-tighter bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-transparent bg-clip-text"
+                                class="text-4xl md:text-6xl font-black uppercase tracking-tighter bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-transparent bg-clip-text"
                             >
                                 Impact & Work
                             </motion.h2>
@@ -1379,10 +1379,10 @@
                             {projects.map((project, i) => (
                                 <motion.div key={i} variants={itemVariants} className={`${project.className} h-full`}>
                                     <GlassCard noPadding enableHover={false} className="cursor-default h-full flex flex-col">
-                                        <div className={`h-1.5 w-full bg-gradient-to-r ${project.color}`} />
-                                        <div className="p-8 flex-1 flex flex-col justify-between">
+                                        <div class={`h-1.5 w-full bg-gradient-to-r ${project.color}`} />
+                                        <div class="p-8 flex-1 flex flex-col justify-between">
                                             <div>
-                                                <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2 block">{project.cat}</span>
+                                                <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2 block">{project.cat}</span>
                                                 <SpotlightText 
                                                     baseClass={`text-2xl font-bold ${isDark ? 'text-gray-500' : 'text-slate-400'} mb-4 transition-colors`}
                                                     highlightClass={`text-2xl font-bold ${isDark ? 'text-white' : 'text-slate-900'} mb-4 transition-colors`}
@@ -1390,12 +1390,12 @@
                                                 >
                                                     {project.title}
                                                 </SpotlightText>
-                                                <p className={`${isDark ? 'text-gray-500' : 'text-gray-600'} text-sm leading-relaxed mb-6 block`}>
+                                                <p class={`text-sm leading-relaxed mb-6 block ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
                                                     {project.desc}
                                                 </p>
                                             </div>
                                             
-                                            <div className="flex flex-wrap gap-2 border-t border-white/5 pt-4">
+                                            <div class="flex flex-wrap gap-2 border-t border-white/5 pt-4">
                                                 {project.tech.map((t, idx) => (
                                                     <SpotlightText 
                                                         key={idx} 
@@ -1449,22 +1449,22 @@
 
             return (
                 <section id="Goals" className="py-32 relative z-10">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="text-center mb-16">
+                    <div class="max-w-7xl mx-auto px-6">
+                        <div class="text-center mb-16">
                             <motion.h2
                                 initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
-                                className="text-4xl md:text-6xl font-black uppercase tracking-tighter bg-gradient-to-r from-emerald-400 to-cyan-500 text-transparent bg-clip-text"
+                                class="text-4xl md:text-6xl font-black uppercase tracking-tighter bg-gradient-to-r from-emerald-400 to-cyan-500 text-transparent bg-clip-text"
                             >
                                 2026 Frontiers
                             </motion.h2>
-                            <p className={`mt-4 ${isDark ? 'text-gray-400' : 'text-gray-600'} font-mono`}>
+                            <p class={`mt-4 ${isDark ? 'text-gray-400' : 'text-gray-600'} font-mono`}>
                                 CURRENTLY EXPLORING THE INTERSECTION OF FULL-STACK, AI, & CLOUD-NATIVE DEVOPS
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {goals.map((goal, i) => (
                                 <motion.div
                                     key={i}
@@ -1473,29 +1473,29 @@
                                     transition={{ duration: 0.5, delay: i * 0.1 }}
                                 >
                                     <GlassCard className="h-full group hover:border-cyan-500/50 transition-colors duration-500">
-                                        <div className="flex items-start gap-6">
-                                            <div className={`p-4 rounded-xl ${isDark ? 'bg-white/5' : 'bg-slate-200'} text-3xl text-cyan-400 group-hover:scale-110 transition-transform duration-300`}>
-                                                <i className={goal.icon}></i>
+                                        <div class="flex items-start gap-6">
+                                            <div class={`p-4 rounded-xl ${isDark ? 'bg-white/5' : 'bg-slate-200'} text-3xl text-cyan-400 group-hover:scale-110 transition-transform duration-300`}>
+                                                <i class={goal.icon}></i>
                                             </div>
-                                            <div className="flex-1">
-                                                <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                                            <div class="flex-1">
+                                                <h3 class={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
                                                     {goal.title}
                                                 </h3>
-                                                <p className={`text-sm mb-4 leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                                                <p class={`text-sm mb-4 leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                                                     {goal.desc}
                                                 </p>
                                                 
                                                 {/* Progress Bar */}
-                                                <div className="w-full h-1.5 bg-gray-700/30 rounded-full overflow-hidden">
+                                                <div class="w-full h-1.5 bg-gray-700/30 rounded-full overflow-hidden">
                                                     <motion.div 
-                                                        className="h-full bg-gradient-to-r from-emerald-400 to-cyan-500"
+                                                        class="h-full bg-gradient-to-r from-emerald-400 to-cyan-500"
                                                         initial={{ width: 0 }}
                                                         whileInView={{ width: `${goal.progress}%` }}
                                                         transition={{ duration: 1.5, ease: "easeOut" }}
                                                     />
                                                 </div>
-                                                <div className="flex justify-end mt-1">
-                                                    <span className="text-[10px] font-mono text-cyan-500">{goal.progress}% Loaded</span>
+                                                <div class="flex justify-end mt-1">
+                                                    <span class="text-[10px] font-mono text-cyan-500">{goal.progress}% Loaded</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1527,18 +1527,18 @@
 
             return (
                 <section id="Blog" className="py-32 relative z-10">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="flex justify-between items-end mb-16">
+                    <div class="max-w-7xl mx-auto px-6">
+                        <div class="flex justify-between items-end mb-16">
                             <motion.h2
                                 initial={{ opacity: 0, x: -50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
-                                className="text-4xl font-black uppercase tracking-tighter bg-gradient-to-r from-purple-500 to-cyan-500 text-transparent bg-clip-text"
+                                class="text-4xl font-black uppercase tracking-tighter bg-gradient-to-r from-purple-500 to-cyan-500 text-transparent bg-clip-text"
                             >
                                 Tech Writing
                             </motion.h2>
                             <MagneticButton>
-                                <a href="https://medium.com/@ianodad" target="_blank" className={`text-sm font-bold ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-slate-900'}`}>
-                                    View All on Medium <i className="fas fa-arrow-right ml-2"></i>
+                                <a href="https://medium.com/@ianodad" target="_blank" class={`text-sm font-bold ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-slate-900'}`}>
+                                    View All on Medium <i class="fas fa-arrow-right ml-2"></i>
                                 </a>
                             </MagneticButton>
                         </div>
@@ -1568,22 +1568,22 @@
                                             href={article.link} 
                                             target="_blank" 
                                             rel="noopener noreferrer"
-                                            className="block h-full cursor-none" 
+                                            class="block h-full cursor-none" 
                                             onMouseEnter={() => setCursorText("READ")}
                                             onMouseLeave={() => setCursorText("")}
                                         >
                                             <GlassCard className="h-full flex flex-col justify-between hover:border-cyan-500/30 transition-colors" enableHover={true}>
                                                 <div>
-                                                    <div className="flex justify-between text-xs font-mono text-cyan-500 mb-4">
+                                                    <div class="flex justify-between text-xs font-mono text-cyan-500 mb-4">
                                                         <span>{article.date}</span>
-                                                        <i className="fab fa-medium"></i>
+                                                        <i class="fab fa-medium"></i>
                                                     </div>
-                                                    <h3 className={`text-xl font-bold mb-3 ${isDark ? 'text-white' : 'text-slate-900'}`}>{article.title}</h3>
-                                                    <p className={`text-sm mb-6 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{article.desc}</p>
+                                                    <h3 class={`text-xl font-bold mb-3 ${isDark ? 'text-white' : 'text-slate-900'}`}>{article.title}</h3>
+                                                    <p class={`text-sm mb-6 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{article.desc}</p>
                                                 </div>
-                                                <div className="flex gap-2">
+                                                <div class="flex gap-2">
                                                     {article.tags.map(tag => (
-                                                        <span key={tag} className={`text-[10px] px-2 py-1 rounded border ${isDark ? 'border-white/10 text-gray-500' : 'border-slate-300 text-slate-500'}`}>
+                                                        <span key={tag} class={`text-[10px] px-2 py-1 rounded border ${isDark ? 'border-white/10 text-gray-500' : 'border-slate-300 text-slate-500'}`}>
                                                             {tag}
                                                         </span>
                                                     ))}
@@ -1606,7 +1606,7 @@
 
             return (
                 <section ref={ref} id="Contact" className="py-32 relative z-10">
-                    <div className="max-w-4xl mx-auto px-6">
+                    <div class="max-w-4xl mx-auto px-6">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8, y: 50 }}
                             animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 50 }}
@@ -1617,11 +1617,11 @@
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                                     transition={{ duration: 0.6, delay: 0.2 }}
-                                    className={`text-3xl md:text-5xl font-bold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}
+                                    class={`text-3xl md:text-5xl font-bold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}
                                 >
                                     Let's Collaborate
                                 </motion.h2>
-                                <p className={`mb-8 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                                <p class={`mb-8 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                                     Nairobi, Kenya (GMT+3) | Open for Remote Work
                                 </p>
 
@@ -1632,7 +1632,7 @@
                                     text="Send Email"
                                 />
 
-                                <div className="flex justify-center gap-8 mt-12">
+                                <div class="flex justify-center gap-8 mt-12">
                                     {[
                                         { href: "https://github.com/Ianodad", icon: "fab fa-github" },
                                         { href: "https://linkedin.com/in/ian-odhiambo", icon: "fab fa-linkedin-in" },
@@ -1644,7 +1644,7 @@
                                                 href={social.href}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className={`text-2xl px-2 py-2 block ${isDark ? 'text-gray-400' : 'text-gray-600'}`}
+                                                class={`text-2xl px-2 py-2 block ${isDark ? 'text-gray-400' : 'text-gray-600'}`}
                                             >
                                                 {/* UPDATED: Animated Icons */}
                                                 <AnimatedIcon iconClass={social.icon} />
@@ -1662,7 +1662,7 @@
         const Footer = () => {
             const { isDark } = useContext(ThemeContext);
             return (
-                <footer className={`relative z-10 py-8 text-center text-gray-500 border-t font-mono text-xs ${isDark ? 'bg-[#020617] border-white/5' : 'bg-[#f0f9ff] border-slate-200'}`}>
+                <footer class={`relative z-10 py-8 text-center text-gray-500 border-t font-mono text-xs ${isDark ? 'bg-[#020617] border-white/5' : 'bg-[#f0f9ff] border-slate-200'}`}>
                     <p>© {new Date().getFullYear()} Ian Odhiambo Adera. All Rights Reserved.</p>
                 </footer>
             );
