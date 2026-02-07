@@ -10,7 +10,7 @@ The website is designed with a modern **Glassmorphism** aesthetic, fully respons
 
 Experience the interactive and responsive design firsthand:
 
-**➡️ [View Live Website Here](https://ian-adera.vercel.app)**
+**➡️ [View Live Website Here]([https://ian-adera.vercel.app](https://ianodad.github.io/IanAderaPortfolio/))**
 
 ---
 
