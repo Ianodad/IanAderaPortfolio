@@ -20,7 +20,7 @@ Recent builds, all live. These are linked from the *Impact & Work* section of th
 
 | Project | What it is | Stack | Live |
 |---------|-----------|-------|------|
-| **DiraAi** | Cinematic marketing site for a Kenya-focused AI legal research product — viewport-locked scroll scenes and a WebGL brass compass hero. | Three.js, GSAP, Lenis, TypeScript, Vite | [diralaw.com](https://diralaw.com) |
+| **DiraAi** | AI legal research for Kenya — every claim links back to the actual Act or judgment it came from, verifiable in one click. LangGraph agent over a Chroma vector index and a Neo4j citation graph. | Next.js, TypeScript, FastAPI, LangGraph, Postgres, Neo4j | [app.diralaw.com](https://app.diralaw.com) |
 | **ANASA Heights** | Scroll-scrubbed flight film for a 34-floor Westlands residential tower. Video seeks frame-by-frame with scroll position. | GSAP, Lenis, TypeScript, Playwright | [anasa-heights.vercel.app](https://anasa-heights.vercel.app) |
 | **Nairobi Iconic Buildings** | Scroll to fly through a folded-paper Nairobi — ten landmark towers in one continuous camera flight, stitched from six AI-generated video legs. | GPT-Image-2, Seedance 2.0, ffmpeg, vanilla JS | [nairobi-iconic-buildings.vercel.app](https://nairobi-iconic-buildings.vercel.app) |
 
