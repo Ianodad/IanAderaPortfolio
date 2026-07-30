@@ -10,7 +10,19 @@ The website is designed with a modern **Glassmorphism** aesthetic, fully respons
 
 Experience the interactive and responsive design firsthand:
 
-**➡️ [View Live Website Here]([https://ian-adera.vercel.app](https://ianodad.github.io/IanAderaPortfolio/))**
+**➡️ [View Live Website Here](https://ianodad.github.io/IanAderaPortfolio/)**
+
+---
+
+## 🌍 Featured Work
+
+Recent builds, all live. These are linked from the *Impact & Work* section of the portfolio.
+
+| Project | What it is | Stack | Live |
+|---------|-----------|-------|------|
+| **DiraAi** | Cinematic marketing site for a Kenya-focused AI legal research product — viewport-locked scroll scenes and a WebGL brass compass hero. | Three.js, GSAP, Lenis, TypeScript, Vite | [diralaw.com](https://diralaw.com) |
+| **ANASA Heights** | Scroll-scrubbed flight film for a 34-floor Westlands residential tower. Video seeks frame-by-frame with scroll position. | GSAP, Lenis, TypeScript, Playwright | [anasa-heights.vercel.app](https://anasa-heights.vercel.app) |
+| **Nairobi Iconic Buildings** | Scroll to fly through a folded-paper Nairobi — ten landmark towers in one continuous camera flight, stitched from six AI-generated video legs. | GPT-Image-2, Seedance 2.0, ffmpeg, vanilla JS | [nairobi-iconic-buildings.vercel.app](https://nairobi-iconic-buildings.vercel.app) |
 
 ---
 
@@ -68,5 +80,5 @@ This project is open-source. Feel free to explore, clone, and modify the code fo
 ---
 
 <p align="center">
-  <strong>© 2025 Ian Odhiambo Adera</strong>
+  <strong>© 2026 Ian Odhiambo Adera</strong>
 </p>
