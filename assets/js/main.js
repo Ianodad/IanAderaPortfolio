@@ -39,10 +39,23 @@
         }
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.05, rootMargin: "0px 0px -5% 0px" }
   );
 
   deferredEls.forEach(function (el) {
     io.observe(el);
   });
+
+  // Safety net: a visitor must never be left looking at a blank tint box
+  // where a screenshot or row belongs. If, for any reason (a stalled
+  // observer, an odd in-app browser viewport, a very fast scroll), an
+  // element is still hidden 2.5s after the DOM is ready, reveal it
+  // without waiting on the observer any further.
+  window.setTimeout(function () {
+    deferredEls.forEach(function (el) {
+      if (!el.classList.contains("is-visible")) {
+        el.classList.add("is-visible");
+      }
+    });
+  }, 2500);
 })();

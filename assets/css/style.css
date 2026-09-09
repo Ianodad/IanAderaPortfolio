@@ -179,10 +179,6 @@ h3 {
   letter-spacing: 0.01em;
 }
 
-.body-copy {
-  max-width: 62ch;
-}
-
 /* ---------------------------------------------------------------
    Focus
 --------------------------------------------------------------- */
@@ -273,14 +269,11 @@ button {
   font-stretch: 62%;
   line-height: 0.85;
   white-space: nowrap;
+  font-size: clamp(3rem, 26cqi, 20rem);
 }
 
 .hero-name .line {
   display: inline;
-}
-
-.hero-name {
-  font-size: clamp(3rem, 26cqi, 20rem);
 }
 
 .hero-lockup {
@@ -294,6 +287,13 @@ button {
 
 .hero-lead-col {
   max-width: 34ch;
+}
+
+@media (min-width: 900px) {
+  .lead,
+  .hero-lead-col {
+    max-width: 44ch;
+  }
 }
 
 .hero-role {
@@ -941,10 +941,12 @@ h3 + .work-desc {
 
   .work-entry[data-side="right"] .work-copy-wrap {
     grid-column: 1;
+    grid-row: 1;
   }
 
   .work-entry[data-side="right"] .work-media {
     grid-column: 2;
+    grid-row: 1;
     margin-inline-end: calc(-1 * var(--bleed));
     margin-inline-start: 0;
   }
@@ -955,12 +957,14 @@ h3 + .work-desc {
 
   .work-entry[data-side="left"] .work-media {
     grid-column: 1;
+    grid-row: 1;
     margin-inline-start: calc(-1 * var(--bleed));
     margin-inline-end: 0;
   }
 
   .work-entry[data-side="left"] .work-copy-wrap {
     grid-column: 2;
+    grid-row: 1;
   }
 
   .work-entry--flat {
@@ -1017,10 +1021,6 @@ h3 + .work-desc {
   .work-copy-wrap {
     display: flex;
     gap: 1.25rem;
-  }
-
-  .work-index {
-    font-size: 2.5rem;
   }
 }
 

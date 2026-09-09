@@ -166,3 +166,84 @@ and no horizontal scroll at 390, 639, 640, 820, 900, 1440, or 1920px.
   output for real failures.
 - No favicon was added (out of scope per spec); browsers will 404 on `/favicon.ico` silently,
   console-visible only in devtools, no user-facing effect.
+
+---
+
+## Fix round 1
+
+Applied per orchestrator/reviewer request (`.planning/reviews/build-review-sonnet.md`), in the
+order specified. All seven items done.
+
+1. **BLOCK, Work grid row placement.** Added `grid-row: 1;` to `.work-entry[data-side="right"]
+   .work-copy-wrap`, `.work-entry[data-side="right"] .work-media`,
+   `.work-entry[data-side="left"] .work-media`, and `.work-entry[data-side="left"] .work-copy-wrap`
+   inside the `@media (min-width: 900px)` block in `assets/css/style.css`. Verified two ways: (a)
+   `getBoundingClientRect()` on all five copy/media pairs at 1440px shows 213-276px of vertical
+   overlap and correct left/right column positions for every entry, including 02 and 04; (b) a
+   freshly re-captured, scrolled-through full-page screenshot at 1440 shows all five entries
+   (01-05) with image and text side by side, image on the correct alternating side.
+2. **FIX, reveal robustness.** `assets/js/main.js`: observer threshold lowered to `0.05`, added
+   `rootMargin: "0px 0px -5% 0px"`, and added a 2500ms safety timer (started at script execution,
+   which for a script tag placed at the end of `<body>` runs at effectively the same moment as
+   `DOMContentLoaded`) that force-adds `is-visible` to any deferred element still hidden. Verified:
+   re-captured both full-page screenshots after a stepped scroll-to-bottom-and-back; the four Work
+   images and one Career/Writing row set that intermittently rendered blank in the pre-fix
+   screenshots (Vector11 at 1440; Nairobi/Chipukizi/Vector11 at 390) now all show `naturalWidth >
+   0` and `is-visible` before capture, and the resulting screenshots show real photos in every
+   slot, no blank oxide-tint rectangles anywhere on either full-page capture.
+3. **FIX, hero stamp duplicated the receipt block.** Stamp text changed from "Nairobi · EAT UTC+3
+   / Open to remote" to "Links checked / 9 Sep 2026" — ties to the same 9 September 2026 check
+   date already stated in the Work section intro ("Five answered when I checked on 9 September
+   2026"), so it adds real, consistent information rather than repeating the receipt block's
+   LOCATION/STATUS rows.
+4. **FIX, hero lead measure.** `.lead` and `.hero-lead-col` widened to `44ch` at `>= 900px` (kept
+   at `34ch` below that). Measured the name-to-lead gap directly with `getBoundingClientRect()`
+   before touching padding: 64px, exactly the `.hero-lockup` margin-top token value, ~9.5% of the
+   674px total hero height at 1440. Judged this is not a "large dead zone" needing a padding or
+   min-height change — it is a small, deliberate rhythm gap, and widening the lead to 44ch already
+   made the lead paragraph taller and denser (5 lines instead of 6 at 1440, 5 instead of 6 at
+   1920), which visibly tightens the composition. Checked both the 1440 and 1920 hero captures
+   after the change; both read as one cohesive block, closer to mock-A-small.jpg's density.
+   Padding/min-height were left unchanged as a result — noting this judgment call rather than
+   changing something that measurement didn't support.
+5. **BLOCK, copy fidelity.** Chipukizi description now reads "ages 1&ndash;6" (en dash, `&ndash;`
+   entity, U+2013) instead of "ages 1 to 6", matching CONTENT.md's en dash verbatim. Confirmed by
+   reading the raw byte sequence in `index.html` and by reading the rendered `textContent` in the
+   browser.
+6. **NIT cleanup.**
+   - Removed the dead `.body-copy` rule (confirmed zero references in `index.html` before
+     deleting).
+   - Merged the two split `.hero-name` rule blocks (previously separated by the unrelated
+     `.hero-name .line` selector) into one declaration.
+   - Removed the no-op `.work-index { font-size: 2.5rem; }` re-declaration inside the tablet-only
+     `@media (min-width: 640px) and (max-width: 899.98px)` block — the base (unconditional)
+     `.work-index` rule already sets `2.5rem` and nothing between it and that media query changes
+     the value, so the tablet block's copy of it did nothing. The block's real rule
+     (`.work-copy-wrap { display: flex; gap: 1.25rem; }`) stays.
+   - `DESIGN.md`'s `--on-oxide-dim` token updated from the stale `oklch(0.90 0.03 70)` to the
+     shipped `oklch(0.93 0.03 70)`, with a one-line note that the lightness was measured with
+     `scripts/check-contrast.py` (0.90 -> 4.21:1, below the 4.5:1 floor for its actual use; raised
+     to 0.93 -> 4.62:1).
+
+   Left unchanged, as instructed: DiraAi's "Try ↗" wording, the un-hyphenated "Next.js 16" /
+   "React 19" / "Astra DB" / "Vanilla JS" stack labels, and the 3px work-media mat padding.
+
+7. **Re-capture and re-run.** All six screenshots in `.planning/shots/new/` overwritten. For both
+   full-page captures, the page was scrolled to the bottom in 300-350px steps (not a single jump,
+   which was confirmed in the original build pass to skip over sections and leave them
+   unrevealed), held at the bottom for 1s, then returned to the top before the shot — this was
+   verified each time by checking `is-visible` counts (17/17 rows, 5/5 images) and
+   `img.naturalWidth > 0` (5/5) immediately before capture. `scripts/check-contrast.py` and
+   `scripts/check-links.sh` were both re-run; output is byte-identical to the original build
+   report (lowest contrast still 4.62:1; link check still 9x200 / 6x403 Medium / 1x000 DiraAi /
+   2x404 bare preconnect origins).
+
+### Files changed in this round
+
+- `assets/css/style.css` (grid-row fix, lead max-width, dead-rule/merge/no-op cleanup)
+- `assets/js/main.js` (threshold, rootMargin, safety timer)
+- `index.html` (stamp copy, Chipukizi en dash)
+- `DESIGN.md` (`--on-oxide-dim` value + measured note)
+- `.planning/shots/new/390x844-viewport.png`, `390-fullpage.png`, `820x1180-viewport.png`,
+  `1440x900-viewport.png`, `1440-fullpage.png`, `1920x1080-viewport.png` (all overwritten)
+- `.planning/BUILD-REPORT.md` (this section)

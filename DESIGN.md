@@ -33,7 +33,7 @@ Aesthetic lane rejected on purpose: glass-dark-gradient (the old site), terminal
 | `--oxide-deep` | `oklch(0.44 0.145 38)` | Hover and pressed state of oxide elements; ALL oxide-colored text under 20px on paper. |
 | `--oxide-tint` | `oklch(0.92 0.04 45)` | Faint wash for status chips and image mats. |
 | `--on-oxide` | `oklch(0.975 0.012 78)` | Text on oxide ground. |
-| `--on-oxide-dim` | `oklch(0.90 0.03 70)` | Secondary text on oxide ground. Solid, not translucent. |
+| `--on-oxide-dim` | `oklch(0.93 0.03 70)` | Secondary text on oxide ground. Solid, not translucent. Lightness measured at build time with `scripts/check-contrast.py`: `0.90` computed to 4.21:1 on oxide, below the 4.5:1 floor for its actual (sub-24px) use, so it was raised to `0.93`, which measures 4.62:1. |
 
 Contrast is measured, not assumed: the build must run a WCAG contrast check (a short Python
 script is fine) for every text/ground pair actually used and record the numbers in the build
