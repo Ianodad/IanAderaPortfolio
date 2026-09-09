@@ -85,18 +85,30 @@ jump to sections with `scroll-margin-top`.
 
 All copy from `.planning/CONTENT.md` verbatim unless listed here:
 
-- Hero lead (new): "Senior full-stack developer in Nairobi. I build systems that move money and
-  cite their sources."
-- Hero receipt block (new): "Every claim on this page has a link you can check. Live products,
-  public essays, a PDF. No adjectives you have to take on faith."
+- Hero lead (new, revised after review): "Senior full-stack developer in Nairobi. Seven years
+  of shipping: insurance platforms at Britam, AI research tools, and scroll-driven brand sites
+  you can open right now." (Seven years = Jan 2019 to today, per the Career ledger.)
+- Hero receipt block (new): four dotted-leader rows:
+  `LOCATION ........ NAIROBI, EAT UTC+3` · `STATUS ........ OPEN TO REMOTE` ·
+  `CLAIMS ON THIS PAGE ........ LINKED BELOW` · `ADJECTIVES ON FAITH ........ 0`
+- One-line About (new, restores dropped credentials): a ruled strip between Hero and Work:
+  "Full-stack since Jan 2019. Azure certified. Moringa School alumnus. Mentor, Google Africa
+  Developer Scholarship. Writes Dev Genus on Medium (10k+ reads)." The Medium phrase links to
+  the profile; nothing else in the strip has a public link, so it is stated plainly, not
+  decorated.
 - Section titles: Work · Career · Writing · Stack · Contact.
-- Work intro (new): "Six things that are live right now, in the order I would show a client."
+- Work intro (new, revised): "Six things I have shipped, in the order I would show a client.
+  Five answered when I checked on 9 September 2026. One did not, and says so."
 - Pipeline intro (new): "Not linkable yet, so listed, not claimed."
-- Writing intro (new): "Dev Genus: technical-but-accessible essays for African developers."
+- Writing intro (new, revised): "Dev Genus on Medium: essays on Claude Code, prompting and
+  model routing, written for working developers."
 - Contact heading (new): "Let's build something you can verify."
-- Meta description (new): "Ian Adera, senior full-stack developer in Nairobi. Money-safe
-  M-Pesa systems, retrieval that cites its sources, agentic pipelines, cinematic scroll sites.
-  Every claim links to proof."
+- Contact receipt block (replaces the second stamp): `LAST UPDATED ........ 9 SEP 2026` ·
+  `SOURCE ........ github.com/Ianodad/IanAderaPortfolio` · `FRAMEWORK ........ NONE` ·
+  `RESPONSE TIME ........ SAME DAY, EAT`.
+- Meta description (new, revised): "Ian Adera, senior full-stack developer in Nairobi.
+  Insurance platforms at Britam, AI research and RAG tools, scroll-driven brand sites, and
+  Dev Genus essays. Every live project links to the product."
 - No em dashes anywhere (CONTENT.md has some inside project copy; replace with commas or
   periods without changing facts).
 

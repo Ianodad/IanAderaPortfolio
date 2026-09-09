@@ -55,8 +55,9 @@ costume of fact. The site should practice that rule visibly.
 
 1. **Practice what you preach.** Every claim on the page links to something checkable. The
    verification mechanic is the design, not a footnote.
-2. **Show the product, not the adjective.** Real screenshots of real live sites, real test
-   counts, real dates. Where there is no proof, say less.
+2. **Show the product, not the adjective.** Real screenshots of real live sites, real dates,
+   real links. Where there is no proof, say less. (Test counts are welcome only when Ian
+   supplies a number from a repo; none are on the page today.)
 3. **Built in daylight.** The site is read on phones in bright equatorial light by busy people.
    Light theme, high contrast, fast, no gimmick that needs a mouse.
 4. **One decisive voice per fold.** Long scroll, one idea per section, deliberate pacing.

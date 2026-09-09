@@ -29,14 +29,17 @@ Aesthetic lane rejected on purpose: glass-dark-gradient (the old site), terminal
 | `--ink` | `oklch(0.23 0.018 60)` | Body text and headings. Never `#000`. |
 | `--ink-2` | `oklch(0.45 0.02 60)` | Secondary text, dates, stack lines. |
 | `--rule` | `oklch(0.23 0.018 60 / 0.16)` | Hairline rules for the visible grid. |
-| `--oxide` | `oklch(0.56 0.17 38)` | The accent. Hero and contact band ground, links, verify marks, index numbers. |
-| `--oxide-deep` | `oklch(0.46 0.15 38)` | Hover and pressed state of oxide elements; text on paper when oxide needs more contrast. |
-| `--oxide-tint` | `oklch(0.92 0.04 45)` | Faint wash for status chips and image frames. |
+| `--oxide` | `oklch(0.53 0.165 38)` | The accent. Hero and contact band ground, index numbers, large link text. |
+| `--oxide-deep` | `oklch(0.44 0.145 38)` | Hover and pressed state of oxide elements; ALL oxide-colored text under 20px on paper. |
+| `--oxide-tint` | `oklch(0.92 0.04 45)` | Faint wash for status chips and image mats. |
 | `--on-oxide` | `oklch(0.975 0.012 78)` | Text on oxide ground. |
-| `--on-oxide-dim` | `oklch(0.975 0.012 78 / 0.72)` | Secondary text on oxide ground. |
+| `--on-oxide-dim` | `oklch(0.90 0.03 70)` | Secondary text on oxide ground. Solid, not translucent. |
 
-Contrast: ink on paper ≈ 12:1. on-oxide on oxide ≈ 5.2:1 (AA for body). oxide on paper ≈ 4.6:1
-(use for text ≥ 16px medium, or use oxide-deep for small text).
+Contrast is measured, not assumed: the build must run a WCAG contrast check (a short Python
+script is fine) for every text/ground pair actually used and record the numbers in the build
+report. Hard floors: 4.5:1 for any text under 24px, 3:1 at or above 24px bold. If a pair fails,
+adjust lightness of the token, not the copy. The review estimated on-oxide on the original oxide
+at ≈4.6:1 and the translucent dim at ≈3.1:1, which is why both were changed above.
 
 Dark mode: none. The scene forces light. `color-scheme: light` declared.
 
@@ -78,13 +81,24 @@ Scale ratio between steps ≥ 1.3. Light text on oxide gets line-height +0.05.
 - Vertical rhythm on a 8px base; section padding `clamp(4rem, 10vw, 9rem)` top and bottom.
   Tight groupings inside (project meta rows at 8–12px), generous separation between projects
   (`clamp(3rem, 7vw, 6rem)`).
-- Project entries alternate 7/5 and 5/7 column splits; the screenshot bleeds to the viewport
-  edge on its side. Never a card. The screenshot sits in a 1px `--rule` frame with a 2px
-  `--oxide-tint` mat.
+- Hero is LEFT-aligned. Never a centered stack.
+- Project entries alternate 7/5 and 5/7 column splits at ≥ 900px only. Between 640px and 899px
+  the Work section is single column (text above image), same as phone but with the phone's
+  full-bleed image replaced by a container-width image. Never a card. The screenshot sits in a
+  1px `--rule` frame with a 2px `--oxide-tint` mat, no shadow.
+- Bleed mechanics at ≥ 900px: the image column uses a negative outer margin
+  (`margin-inline-end: calc(-1 * (100vw - 100%) / 2)` on the right side, mirrored on the left,
+  computed against the container) so the image passes over the container hairline and stops at
+  the viewport edge. The container hairlines stay fixed; the image crosses them. Guard against
+  horizontal scroll with `overflow-x: clip` on the section.
 - Career and Writing are ledger tables: date column narrow (wdth 62), company/role wide, one
   line of description. Row rules only, no vertical lines, no zebra background on desktop.
-- Phone (≤ 640px): single column, images full-bleed, index numbers shrink to 2.5rem and sit
-  above the name, tables collapse to stacked rows with the date as an eyebrow.
+- Phone (< 640px): single column, images full-bleed, each project's index number shrinks to
+  2.5rem and sits above that project's H3. Ledger tables collapse to stacked rows with a fixed
+  anatomy, every time: eyebrow (date, narrow uppercase) → heading (company, then role) → body
+  (description) → receipt line (tech). Row rules stay.
+- Print: oxide bands become paper with a 2px oxide top rule; images print at container width;
+  every external link prints its URL after the text (`a[href^="http"]::after`); no motion.
 
 ## Components
 
@@ -94,9 +108,9 @@ Scale ratio between steps ≥ 1.3. Light text on oxide gets line-height +0.05.
 - **Status chip**: narrow uppercase label in `--oxide-tint` ground with `--oxide-deep` text,
   no radius beyond 2px. Values: LIVE, PRIVATE BETA, IN DEVELOPMENT, UNREACHABLE (only if a
   link fails a check the day it is built).
-- **Stamp**: a rotated (-6deg) 1.5px oxide outline block with two lines of narrow uppercase
-  text, used once in the hero ("NAIROBI · EAT UTC+3 / OPEN TO REMOTE") and once in contact.
-  Never more than twice per page.
+- **Stamp**: a rotated (-6deg) 1.5px outline block with two lines of narrow uppercase text,
+  used ONCE, in the hero ("NAIROBI · EAT UTC+3 / OPEN TO REMOTE"), in `--on-oxide` on the oxide
+  ground. Contact gets a receipt block instead (see BRIEF §8), not a second stamp.
 - **Buttons**: only two on the page (Email, CV PDF). Rectangular, 2px radius, 48px tall,
   oxide fill with on-oxide text on paper; on oxide ground they invert (paper fill, oxide text).
 - **Nav**: static top bar, not sticky, not glass. Name left, four text links, CV link right.
