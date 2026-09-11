@@ -1,0 +1,5 @@
+.DS_Store
+.claude/haiku-output/
+.planning/mocks/*.png
+.planning/shots/new/*.png
+scripts/__pycache__/
